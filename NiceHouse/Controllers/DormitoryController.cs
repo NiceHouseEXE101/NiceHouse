@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NiceHouse.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using NiceHouse.Models;
 
 namespace NiceHouse.Controllers
 {
@@ -19,11 +18,46 @@ namespace NiceHouse.Controllers
         }
 
         // GET: Dormitory
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string address, string name, decimal? minPrice, decimal? maxPrice, string type)
         {
-              return _context.Dormitories != null ? 
-                          View(await _context.Dormitories.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Dormitories'  is null.");
+            var dormitories = _context.Dormitories
+                .Include(d => d.Images)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(address))
+            {
+                dormitories = dormitories.Where(d => d.Address.Contains(address));
+            }
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                dormitories = dormitories.Where(d => d.Name.Contains(name));
+            }
+
+            if (minPrice.HasValue)
+            {
+                dormitories = dormitories.Where(d => d.MinRoomPrice >= minPrice.Value);
+            }
+
+            if (maxPrice.HasValue)
+            {
+                dormitories = dormitories.Where(d => d.MaxRoomPrice <= maxPrice.Value);
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                if (Enum.TryParse<DormitoryType>(type, out var dormitoryType))
+                {
+                    dormitories = dormitories.Where(d => d.Type == dormitoryType);
+                }
+                else
+                {
+                    // Handle invalid type if necessary
+                    ModelState.AddModelError("", "Invalid dormitory type.");
+                }
+            }
+
+            return View(await dormitories.ToListAsync());
         }
 
         // GET: Dormitory/Details/5
@@ -35,7 +69,9 @@ namespace NiceHouse.Controllers
             }
 
             var dormitory = await _context.Dormitories
+                .Include(d => d.Images) // Include related images
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (dormitory == null)
             {
                 return NotFound();
@@ -51,8 +87,6 @@ namespace NiceHouse.Controllers
         }
 
         // POST: Dormitory/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Type,Address,Description,MaxRoomPrice,MinRoomPrice,NumberOfPeople")] Dormitory dormitory)
@@ -83,8 +117,6 @@ namespace NiceHouse.Controllers
         }
 
         // POST: Dormitory/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type,Address,Description,MaxRoomPrice,MinRoomPrice,NumberOfPeople")] Dormitory dormitory)
@@ -126,7 +158,9 @@ namespace NiceHouse.Controllers
             }
 
             var dormitory = await _context.Dormitories
+                .Include(d => d.Images) // Include related images
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (dormitory == null)
             {
                 return NotFound();
@@ -142,21 +176,22 @@ namespace NiceHouse.Controllers
         {
             if (_context.Dormitories == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Dormitories'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Dormitories' is null.");
             }
+
             var dormitory = await _context.Dormitories.FindAsync(id);
             if (dormitory != null)
             {
                 _context.Dormitories.Remove(dormitory);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DormitoryExists(int id)
         {
-          return (_context.Dormitories?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _context.Dormitories?.Any(e => e.Id == id) ?? false;
         }
     }
 }
