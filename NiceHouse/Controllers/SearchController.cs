@@ -17,7 +17,6 @@ namespace NiceHouse.Controllers
 
         public IActionResult Index(string location, decimal? minPrice, decimal? maxPrice, string hotelName)
         {
-
             var hotels = _context.Hotels
                 .Include(h => h.Images)
                 .AsQueryable();
@@ -42,8 +41,11 @@ namespace NiceHouse.Controllers
                 hotels = hotels.Where(h => h.Name.Contains(hotelName));
             }
 
+            // Tải toàn bộ danh sách khách sạn vào bộ nhớ
+            var hotelsList = hotels.ToList();
+
             // Lấy thông tin giá thấp nhất và giá cao nhất từ bảng RoomType cho từng khách sạn
-            foreach (var hotel in hotels)
+            foreach (var hotel in hotelsList)
             {
                 var roomTypes = _context.RoomTypes.Where(rt => rt.HotelId == hotel.Id).OrderBy(rt => rt.Price).ToList();
 
@@ -59,7 +61,7 @@ namespace NiceHouse.Controllers
                 }
             }
 
-            return View(hotels);
+            return View(hotelsList);
         }
 
         public IActionResult Rooms(int hotelId, decimal? minPrice, decimal? maxPrice, int? numberOfBeds)
