@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Button, Typography, Box } from '@mui/material';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import logo1 from '../../assets/logo/logo-notext-black.png'; // Ensure the correct path for the logo
-import logo2 from '../../assets/logo/logo-notext-white.png'
+import logo2 from '../../assets/logo/logo-notext-white.png';
+
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
 
@@ -34,64 +35,66 @@ const Header = () => {
       }}
     >
       <Container>
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center' }}>
           {/* Brand/Logo */}
-           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      {/* Điều kiện để đổi logo dựa trên trạng thái scrolling */}
-      <img
-        src={scrolling ? logo2 : logo1}
-        alt="Resort Logo"
-        style={{ height: '70px', marginRight: '15px', transition: '0.3s ease' }}
-      />
-      <Typography
-        variant="h5"
-        sx={{
-          fontWeight: 600,
-          color: scrolling ? '#fff' : '#343a40', // Đổi màu text khi scroll
-          letterSpacing: '1.5px',
-          transition: 'color 0.3s ease',
-        }}
-      >
-        NICEHOUSE
-      </Typography>
-    </Box>
-          {/* Bootstrap Navbar */}
-          <Navbar bg="transparent" expand="lg">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ml-auto" style={navStyle}>
-                <Nav.Link href="#home" style={navLinkStyle(scrolling)}>
-                  Home
-                </Nav.Link>
-                <Nav.Link href="#about" style={navLinkStyle(scrolling)}>
-                  About
-                </Nav.Link>
-                <Nav.Link href="#services" style={navLinkStyle(scrolling)}>
-                  Services
-                </Nav.Link>
-                <Nav.Link href="#contact" style={navLinkStyle(scrolling)}>
-                  Contact
-                </Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <img
+              src={scrolling ? logo2 : logo1}
+              alt="Resort Logo"
+              style={{ height: '70px', marginRight: '15px', transition: '0.3s ease' }}
+            />
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 600,
+                color: scrolling ? '#fff' : '#343a40', // Change text color when scrolling
+                letterSpacing: '1.5px',
+                transition: 'color 0.3s ease',
+              }}
+            >
+              NICEHOUSE
+            </Typography>
+          </Box>
 
-          {/* Booking Button */}
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={{
-              backgroundColor: scrolling ? '#fff': '#343a40',
-              color: scrolling ? '#343a40': '#fff',
-              fontWeight: 'bold',
-              padding: '10px 25px',
-              borderRadius: '25px',
-              '&:hover': { backgroundColor: '#FF8500', color: '#fff' },
+          {/* Navbar Links and Button Group */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            {/* Bootstrap Navbar for responsive links */}
+            <Navbar bg="transparent" expand="lg">
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="ml-auto" style={navStyle}>
+                  <Nav.Link href="#home" style={navLinkStyle(scrolling)}>
+                    Home
+                  </Nav.Link>
+                  <Nav.Link href="#about" style={navLinkStyle(scrolling)}>
+                    About
+                  </Nav.Link>
+                  <Nav.Link href="#services" style={navLinkStyle(scrolling)}>
+                    Services
+                  </Nav.Link>
+                  <Nav.Link href="#contact" style={navLinkStyle(scrolling)}>
+                    Contact
+                  </Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
 
-            }}
-          >
-            Book Now
-          </Button>
+            {/* Booking Button */}
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{
+                backgroundColor: scrolling ? '#fff' : '#343a40',
+                color: scrolling ? '#343a40' : '#fff',
+                fontWeight: 'bold',
+                padding: '10px 25px',
+                borderRadius: '25px',
+                '&:hover': { backgroundColor: '#FF8500', color: '#fff' },
+              }}
+            >
+              Book Now
+            </Button>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
@@ -100,10 +103,6 @@ const Header = () => {
 
 // Styles for the navigation
 const navStyle = {
-  // cursor: 'pointer',                       //Thêm Hover cho header Menu
-  // '&:hover':{
-  //   color: '#343a40',
-  // },
   display: 'flex',
   justifyContent: 'flex-end',
   alignItems: 'center',
