@@ -3,8 +3,10 @@ import { Box, Typography } from '@mui/material';
 import styled, { keyframes } from 'styled-components';
 import useInView from './useInView'; // Custom hook for intersection observer
 import PoolImage from '../../assets/facilities/pool.jpg';
+import FitnessImage from '../../assets/facilities/pool.jpg';
+import GardenImage from '../../assets/facilities/pool.jpg';
 
-// Slide animations
+// Slide animations for images
 const slideInLeft = keyframes`
   from {
     transform: translateX(-100%);
@@ -42,7 +44,7 @@ const fadeInUp = keyframes`
 // Container for the facilities section
 const FacilitiesContainer = styled(Box)`
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f0f0f0, #e6e6e6);
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,11 +71,13 @@ const Image = styled.img`
   width: 45%;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+  filter: brightness(80%);
 
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    filter: brightness(100%);
   }
 
   @media (max-width: 960px) {
@@ -150,13 +154,13 @@ const Facilities = () => {
         reverse={false}
       />
       <FacilityItem
-        imageSrc={PoolImage}
+        imageSrc={FitnessImage}
         title="Fitness Center"
         description="Stay fit and healthy with our fully equipped fitness center available 24/7."
         reverse={true}
       />
       <FacilityItem
-        imageSrc={PoolImage}
+        imageSrc={GardenImage}
         title="Rooftop Garden"
         description="Enjoy the breathtaking views from our rooftop garden designed for relaxation."
         reverse={false}

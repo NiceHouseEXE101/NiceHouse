@@ -6,6 +6,8 @@ import FacilitiesSection from '../components/Home/FacilitiesSection ';
 import IntroSection from '../components/Home/NicehouseIntro ';
 import Facilities from '../components/Home/Facilities ';
 import FacilitiesOffer from '../components/Home/FacilitiesOffer';
+import Rating from '../components/Home/Rating';
+import BlogSection from '../components/Home/BlogSection';
 const HomePage = () => {
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
@@ -23,6 +25,10 @@ const HomePage = () => {
        {/* <RoomCarouselSection/> */}
         {/*Facilities Offer*/ }
        <FacilitiesOffer/>
+       {/*Cutomer Feedback*/ }
+       <Rating/>
+        {/*Blog Travel*/ }
+       <BlogSection/>
     </Box>
   );
 };

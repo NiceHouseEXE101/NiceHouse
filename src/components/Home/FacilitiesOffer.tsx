@@ -1,12 +1,49 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Typography } from '@mui/material';
-import SchoolImage from '../assets/facilities/school.jpg';
+import styled from 'styled-components';
+
+// Styled components for hover effects and styling
+const ServiceItem = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+`;
+
+const RoomPricing = styled.div`
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+`;
 
 const FacilitiesOffer: React.FC = () => {
   return (
     <div style={{ background: '#f9f9f9', padding: '50px 0' }}>
       <Container>
+        {/* Header Section */}
         <Row className="justify-content-center text-center mb-4">
           <Col md={8}>
             <Typography variant="h5" style={{ color: '#007bff', marginBottom: '10px' }}>
@@ -17,60 +54,55 @@ const FacilitiesOffer: React.FC = () => {
             </Typography>
           </Col>
         </Row>
+
+        {/* Offer Items */}
         <Row>
           <Col md={4} className="mb-4">
-            <div className="service-item">
+            <ServiceItem>
               <img
                 src="https://wp.ditsolution.net/royella-multipurpose/wp-content/uploads/2023/11/offers-2.jpg"
                 alt="Double Suite Room"
-                className="img-fluid"
               />
-              <div className="room-pricing">
-                <span className="dolar">25% off</span>
-              </div>
+              <RoomPricing>25% off</RoomPricing>
               <Typography variant="h6" className="mt-3">
                 Double Suite Room
               </Typography>
               <p>From: $200</p>
               <p>4.5 (Review)</p>
               <Button variant="primary">Book Now</Button>
-            </div>
+            </ServiceItem>
           </Col>
+
           <Col md={4} className="mb-4">
-            <div className="service-item">
+            <ServiceItem>
               <img
                 src="https://wp.ditsolution.net/royella-multipurpose/wp-content/uploads/2023/11/offers-2-1.jpg"
                 alt="Superior Bed Room"
-                className="img-fluid"
               />
-              <div className="room-pricing">
-                <span className="dolar">28% off</span>
-              </div>
+              <RoomPricing>28% off</RoomPricing>
               <Typography variant="h6" className="mt-3">
                 Superior Bed Room
               </Typography>
               <p>From: $180</p>
               <p>4.5 (Review)</p>
               <Button variant="primary">Book Now</Button>
-            </div>
+            </ServiceItem>
           </Col>
+
           <Col md={4} className="mb-4">
-            <div className="service-item">
+            <ServiceItem>
               <img
                 src="https://wp.ditsolution.net/royella-multipurpose/wp-content/uploads/2023/11/offers-3.jpg"
                 alt="Deluxe Double Room"
-                className="img-fluid"
               />
-              <div className="room-pricing">
-                <span className="dolar">35% off</span>
-              </div>
+              <RoomPricing>35% off</RoomPricing>
               <Typography variant="h6" className="mt-3">
                 Deluxe Double Room
               </Typography>
               <p>From: $220</p>
               <p>4.5 (Review)</p>
               <Button variant="primary">Book Now</Button>
-            </div>
+            </ServiceItem>
           </Col>
         </Row>
       </Container>

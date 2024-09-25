@@ -1,104 +1,136 @@
 import React from 'react';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import logo from '../../assets/logo/logo-white.png';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
-    <footer style={styles.footer}>
-      <div style={styles.column}>
-        <img
-          src="https://wp.ditsolution.net/royella-multipurpose/wp-content/uploads/2023/11/logo-1.png"
-          alt="Logo"
-          style={styles.logo}
-        />
-        <h3 style={styles.heading}>Contact Info</h3>
-        <div style={styles.contactItem}>
-          <i className="flaticon-call-answer" style={styles.icon}></i>
-          <h2 style={styles.contactText}>+980 (1234) 567 220</h2>
-        </div>
-        <div style={styles.contactItem}>
-          <i className="flaticon-mail" style={styles.icon}></i>
-          <h2 style={styles.contactText}>example@yahoo.com</h2>
-        </div>
-        <div style={styles.contactItem}>
-          <i className="flaticon-map" style={styles.icon}></i>
-          <h2 style={styles.contactText}>
-            102/B New Elephant <br />
-            Rd Dhaka - 1212
-          </h2>
-        </div>
+    <footer style={styles.footerContainer}>
+      <div style={styles.leftColumn}>
+        <h3 style={styles.contactHeader}>Contact Us</h3>
+        <form style={styles.contactForm}>
+          <input type="text" placeholder="Your Name" style={styles.inputField} />
+          <input type="email" placeholder="Email Address" style={styles.inputField} />
+          <button style={styles.subscribeButton}>Subscribe</button>
+        </form>
       </div>
-
-      <div style={styles.column}>
-        <h3 style={styles.heading}>USEFUL LINKS</h3>
-        <ul style={styles.linkList}>
-          <li style={styles.linkItem}>
-            <a href="#" style={styles.link}>
-              Home
-            </a>
-          </li>
-          <li style={styles.linkItem}>
-            <a href="#" style={styles.link}>
-              About
-            </a>
-          </li>
-          <li style={styles.linkItem}>
-            <a href="#" style={styles.link}>
-              Services
-            </a>
-          </li>
-          <li style={styles.linkItem}>
-            <a href="#" style={styles.link}>
-              Contact
-            </a>
-          </li>
-        </ul>
+      <div style={styles.rightColumn}>
+        <div style={styles.logoSection}>
+          <img src={logo} alt="NICEHOUSE Logo" style={styles.logo} />
+          <h2 style={styles.companyName}>NICEHOUSE</h2>
+        </div>
+        <p style={styles.companyInfo}>
+          Your go-to platform for comfortable living. Contact us for support or subscribe for updates!
+        </p>
+        <div style={styles.socialSection}>
+          <h3 style={styles.socialHeader}>Follow Us</h3>
+          <div style={styles.socialIcons}>
+            <FaFacebookF style={styles.icon} />
+            <FaTwitter style={styles.icon} />
+            <FaInstagram style={styles.icon} />
+          </div>
+        </div>
       </div>
     </footer>
   );
 };
 
-// Inline styles object
 const styles = {
-  footer: {
+  footerContainer: {
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '20px',
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#343a40',
+    color: '#fff',
+    padding: '2rem 4rem',
+    flexWrap: 'wrap' as 'wrap',
+    alignItems: 'center',
   },
-  column: {
-    flex: 1,
-    padding: '10px',
+  leftColumn: {
+    flex: '1',
+    maxWidth: '300px',
+    margin: '1rem',
+    textAlign: 'left' as 'left',
   },
-  logo: {
-    width: '184px',
-    height: '62px',
+  rightColumn: {
+    flex: '2',
+    display: 'flex',
+    flexDirection: 'column' as 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: '1rem',
+    textAlign: 'center' as 'center',
   },
-  heading: {
-    fontSize: '18px',
-    marginBottom: '15px',
-    fontWeight: 'bold',
-  },
-  contactItem: {
+  logoSection: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '10px',
+    gap: '1rem',
+    marginBottom: '1rem',
+  },
+  logo: {
+    width: '100px',
+  },
+  companyName: {
+    fontSize: '1.8rem',
+    fontWeight: 'bold',
+    color: '#007bff',
+  },
+  companyInfo: {
+    fontSize: '1rem',
+    lineHeight: '1.5',
+    color: '#ccc',
+    marginBottom: '1rem',
+  },
+  contactHeader: {
+    fontSize: '1.2rem',
+    marginBottom: '1rem',
+    color: '#007bff',
+  },
+  contactForm: {
+    display: 'flex',
+    flexDirection: 'column' as 'column',
+    gap: '0.75rem',
+  },
+  inputField: {
+    padding: '0.75rem',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    width: '100%',
+  },
+  subscribeButton: {
+    padding: '0.75rem',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+  },
+  socialSection: {
+    display: 'flex',
+    flexDirection: 'column' as 'column',
+    alignItems: 'center',
+  },
+  socialHeader: {
+    fontSize: '1.2rem',
+    marginBottom: '0.75rem',
+    color: '#007bff',
+  },
+  socialIcons: {
+    display: 'flex',
+    gap: '1rem',
   },
   icon: {
-    fontSize: '20px',
-    marginRight: '10px',
+    fontSize: '1.5rem',
+    color: '#fff',
+    cursor: 'pointer',
+    transition: 'transform 0.3s ease',
   },
-  contactText: {
-    fontSize: '16px',
-  },
-  linkList: {
-    listStyleType: 'none',
-    padding: 0,
-  },
-  linkItem: {
-    marginBottom: '10px',
-  },
-  link: {
-    textDecoration: 'none',
-    color: '#007bff',
+  '@media (hover: hover)': {
+    icon: {
+      ':hover': {
+        transform: 'scale(1.2)',
+        color: '#007bff',
+      },
+    },
   },
 };
 
