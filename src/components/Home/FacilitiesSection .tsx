@@ -83,9 +83,9 @@ const FacilitiesSection = () => {
       </Box>
 
       {/* Title and Description */}
-      <Title variant="h3" sx={{fontFamily: 'Brice Regular SemiExpanded'}}>Luxurious Apartment Facilities</Title>
+      <Title variant="h3" sx={{fontFamily: 'Brice Regular SemiExpanded'}}>TIỆN ÍCH, DỊCH VỤ HIỆN ĐẠI</Title>
       <Description variant="body1">
-        Indulge in our top-tier amenities, designed to provide unparalleled comfort and relaxation.
+      Tận hưởng các tiện nghi hàng đầu của chúng tôi, được thiết kế để mang lại sự thoải mái và thư giãn.
       </Description>
 
       {/* Facilities Grid */}
@@ -93,13 +93,13 @@ const FacilitiesSection = () => {
         <Grid item xs={12} sm={6} md={3}>
           <FacilityCard>
             <CardMedia component="img" height="200" image={PoolImage} alt="Infinity Pool" />
-            <Overlay className="overlay">Infinity Pool</Overlay>
+            <Overlay className="overlay">Hồ bơi vô cực</Overlay>
             <CardContent>
               <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40',fontFamily: 'Brice Regular SemiExpanded' }}>
-                Infinity Pool
+                Hồ bơi vô cực
               </Typography>
               <Typography variant="body2" sx={{ color: '#6c757d' }}>
-                Relax and unwind at our luxurious infinity pool.
+                Thư giãn tại hồ bơi ngay tại căn hộ.
               </Typography>
             </CardContent>
           </FacilityCard>
@@ -107,13 +107,13 @@ const FacilitiesSection = () => {
         <Grid item xs={12} sm={6} md={3}>
           <FacilityCard>
             <CardMedia component="img" height="200" image={SchoolImage} alt="Prestigious School" />
-            <Overlay className="overlay">Prestigious School</Overlay>
+            <Overlay className="overlay">Thuận tiện di chuyển</Overlay>
             <CardContent>
               <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40',fontFamily: 'Brice Regular SemiExpanded' }}>
-                Prestigious School
+                Thuận tiện di chuyển
               </Typography>
               <Typography variant="body2" sx={{ color: '#6c757d' }}>
-                Elite schools are just a short walk away.
+                Địa điểm gần trường Đại học FPT Quy Nhơn.
               </Typography>
             </CardContent>
           </FacilityCard>
@@ -121,13 +121,13 @@ const FacilitiesSection = () => {
         <Grid item xs={12} sm={6} md={3}>
           <FacilityCard>
             <CardMedia component="img" height="200" image={GymImage} alt="Fitness Center" />
-            <Overlay className="overlay">Fitness Center</Overlay>
+            <Overlay className="overlay">Phòng Gym trong nhà</Overlay>
             <CardContent>
               <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40',fontFamily: 'Brice Regular SemiExpanded' }}>
-                Fitness Center
+                Phòng Gym trong nhà
               </Typography>
               <Typography variant="body2" sx={{ color: '#6c757d' }}>
-                Stay active in our state-of-the-art fitness center.
+                Nâng cao sức khỏe trong chính nơi ở của bạn.
               </Typography>
             </CardContent>
           </FacilityCard>

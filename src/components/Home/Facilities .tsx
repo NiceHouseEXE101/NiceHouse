@@ -146,23 +146,30 @@ const FacilityItem = ({ imageSrc, title, description, reverse }) => {
 const Facilities = () => {
   return (
     <FacilitiesContainer>
-      <FacilitiesTitle>Enjoy Complete & Best Quality Facilities</FacilitiesTitle>
+      <FacilitiesTitle sx={
+        {
+          fontSize: '2.4rem',
+          fontFamily: 'Brice Regular SemiExpanded',
+          fontWeight: '700',
+          color: '#343a40'
+        }
+      }>Tiện nghi chất lượng cao</FacilitiesTitle>
       <FacilityItem
         imageSrc={PoolImage}
-        title="Swimming Pool"
-        description="Relax and unwind in our state-of-the-art swimming pool with a serene view."
+        title="Hồ bơi trong nhà"
+        description="Thư giãn và ngắm nhìn phong cảnh từ trên cao."
         reverse={false}
       />
       <FacilityItem
         imageSrc={FitnessImage}
-        title="Fitness Center"
-        description="Stay fit and healthy with our fully equipped fitness center available 24/7."
+        title="Phòng Gym"
+        description="Tập luyện không cần di chuyển xa."
         reverse={true}
       />
       <FacilityItem
         imageSrc={GardenImage}
-        title="Rooftop Garden"
-        description="Enjoy the breathtaking views from our rooftop garden designed for relaxation."
+        title="Quán cafe view đẹp"
+        description="Tận hưởng khung cảnh tuyệt đẹp từ tầng thượng của chung cư."
         reverse={false}
       />
     </FacilitiesContainer>

@@ -34,9 +34,9 @@ const LeftSection = styled(Box)`
 
 // Title with modern fonts and elegant uppercase styling
 const Title = styled(Typography)`
-  font-size: 48px;
+  font-size: 30px;
   font-weight: 700;
-  color: #1a3d7c;
+  color: #343a40;
   text-transform: uppercase;
   margin-bottom: 15px;
   font-family: 'Poppins', sans-serif;
@@ -62,7 +62,7 @@ const Description = styled(Typography)`
   transition: color 0.3s ease;
 
   &:hover {
-    color: #1a3d7c;
+    color: #686868;
   }
 `;
 
@@ -119,10 +119,15 @@ const IntroSection = () => {
   return (
     <Container>
       <LeftSection>
-        <Title sx={{fontFamily:'Brice Regular SemiExpanded'}}>About NICEHOUSE</Title>
-        <Heading>Your Luxury Home Experience</Heading>
+        <Title sx={
+          {   fontFamily:'Brice Regular SemiExpanded', 
+              fontSize: '30px',
+              color: '#343a40',
+              fontWeight: 'bold'}
+          }>Về NICEHOUSE</Title>
+        <Heading>Nơi cung cấp dịch vụ lưu trú giá rẻ, tiện nghi.</Heading>
         <Description>
-          Discover the epitome of luxurious living at NICEHOUSE. Our apartments are designed with elegance and sophistication, blending modern conveniences with timeless beauty. Enjoy stunning interiors, world-class amenities, and a serene environment that makes you feel at home.
+            Khám phá đỉnh cao của cuộc sống xa hoa tại NICEHOUSE. Các căn hộ của chúng tôi được thiết kế với sự thanh lịch và tinh tế, kết hợp tiện nghi hiện đại với vẻ đẹp vượt thời gian. Tận hưởng nội thất tuyệt đẹp, tiện nghi đẳng cấp thế giới và môi trường thanh bình khiến bạn cảm thấy như ở nhà.
         </Description>
       </LeftSection>
       <RightSection>
