@@ -17,7 +17,7 @@ const App: React.FC = () => {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false); // Stop loading after a short delay
-    }, 500); // Simulate a 500ms loading time for smoother transitions
+    }, 400); // Simulate a 500ms loading time for smoother transitions
     return () => clearTimeout(timer); // Clear timeout when component unmounts
   }, [location]); // Trigger loading on location change
 
