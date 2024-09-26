@@ -65,7 +65,7 @@ const Header = () => {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto" style={navStyle}  >
-                  <Nav.Link href="#home" style={navLinkStyle(scrolling)}>
+                  <Nav.Link href="/" style={navLinkStyle(scrolling)}>
                     Home
                   </Nav.Link>
                   <Nav.Link href="#about" style={navLinkStyle(scrolling)}>
