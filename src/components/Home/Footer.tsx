@@ -1,33 +1,40 @@
 import React from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-import logo from '../../assets/logo/logo-white.png';
+import { BsTiktok } from 'react-icons/bs';
+import { FaFacebookF } from 'react-icons/fa'; // Facebook icon
+import { SiZalo } from 'react-icons/si'; // Zalo icon
 
 const Footer = () => {
   return (
-    <footer style={styles.footerContainer}>
-      <div style={styles.leftColumn}>
-        <h3 style={styles.contactHeader}>Contact Us</h3>
-        <form style={styles.contactForm}>
-          <input type="text" placeholder="Your Name" style={styles.inputField} />
-          <input type="email" placeholder="Email Address" style={styles.inputField} />
-          <button style={styles.subscribeButton}>Subscribe</button>
-        </form>
-      </div>
-      <div style={styles.rightColumn}>
-        <div style={styles.logoSection}>
-          <img src={logo} alt="NICEHOUSE Logo" style={styles.logo} />
-          <h2 style={styles.companyName}>NICEHOUSE</h2>
-        </div>
-        <p style={styles.companyInfo}>
-          Your go-to platform for comfortable living. Contact us for support or subscribe for updates!
-        </p>
-        <div style={styles.socialSection}>
-          <h3 style={styles.socialHeader}>Follow Us</h3>
-          <div style={styles.socialIcons}>
-            <FaFacebookF style={styles.icon} />
-            <FaTwitter style={styles.icon} />
-            <FaInstagram style={styles.icon} />
+    <footer style={styles.footer}>
+      <div style={styles.footerContainer}>
+        {/* Left Section: Company Info */}
+        <div style={styles.companyInfoSection}>
+          <div style={styles.logoContainer}>
+            <img src="/src/assets/logo/logo-notext-white.png" alt="NICEHOUSE Logo" style={styles.logo} />
+            <h3 style={styles.logoText}>NICEHOUSE</h3>
           </div>
+          <p style={styles.companyDescription}>
+            Hoạt động trong lĩnh vực cung cấp dịch vụ lưu trú giá cả hợp lí, tiện nghi, hiện đại. NiceHouse đặt mục tiêu trở thành nhà cung cấp được tin dùng hàng đầu tại Quy Nhơn.
+          </p>
+          <div style={styles.socialIcons}>
+            <a href="https://www.facebook.com/NiceHouse7979" target="_blank" rel="noopener noreferrer">
+              <FaFacebookF style={styles.icon} />
+            </a>
+            <a href="https://www.tiktok.com/@nice.house30?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">
+              <BsTiktok style={styles.icon} />
+            </a>
+          </div>
+        </div>
+
+        {/* Middle Section: Contact Info */}
+        <div style={styles.contactSection}>
+          <h4 style={styles.contactHeader}>NiceHouse</h4>
+          <p style={styles.contactDetails}>Trường Đại học FPT Quy Nhơn.</p>
+          <p style={styles.contactDetails}>Khu Đô thị mới An Phú Thịnh - Nhơn Bình, Quy Nhơn, Bình Định</p>
+          <p style={styles.contactDetails}>0123456789</p>
+          <p style={styles.contactDetails}>
+            Email: <a href="mailto:nicehouse7979@gmail.com" style={styles.emailLink}>nicehouse7979@gmail.com</a>
+          </p>
         </div>
       </div>
     </footer>
@@ -35,102 +42,82 @@ const Footer = () => {
 };
 
 const styles = {
+  footer: {
+    backgroundColor: '#222',
+    padding: '2rem 1rem',
+    color: '#fff',
+  },
   footerContainer: {
     display: 'flex',
-    justifyContent: 'space-between',
-    backgroundColor: '#343a40',
-    color: '#fff',
-    padding: '2rem 4rem',
-    flexWrap: 'wrap' as 'wrap',
+    justifyContent: 'space-around', // Changed to 'space-around' for better spacing
     alignItems: 'center',
+    flexWrap: 'wrap' as 'wrap',
   },
-  leftColumn: {
+  companyInfoSection: {
     flex: '1',
     maxWidth: '300px',
-    margin: '1rem',
-    textAlign: 'left' as 'left',
+    textAlign: 'left' as 'left', // Aligns text to the left
+    marginBottom: '1rem',
   },
-  rightColumn: {
-    flex: '2',
-    display: 'flex',
-    flexDirection: 'column' as 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: '1rem',
-    textAlign: 'center' as 'center',
-  },
-  logoSection: {
+  logoContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '1rem',
+    gap: '0.5rem',
     marginBottom: '1rem',
   },
   logo: {
-    width: '100px',
+    width: '50px',
+    height: 'auto',
   },
-  companyName: {
-    fontSize: '1.8rem',
+  logoText: {
+    fontSize: '20px',
     fontWeight: 'bold',
-    color: '#007bff',
-  },
-  companyInfo: {
-    fontSize: '1rem',
-    lineHeight: '1.5',
-    color: '#ccc',
-    marginBottom: '1rem',
-  },
-  contactHeader: {
-    fontSize: '1.2rem',
-    marginBottom: '1rem',
-    color: '#007bff',
-  },
-  contactForm: {
-    display: 'flex',
-    flexDirection: 'column' as 'column',
-    gap: '0.75rem',
-  },
-  inputField: {
-    padding: '0.75rem',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    width: '100%',
-  },
-  subscribeButton: {
-    padding: '0.75rem',
-    backgroundColor: '#007bff',
     color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
+    fontFamily: 'Brice Regular SemiExpanded',
+    marginTop: '20px'
   },
-  socialSection: {
-    display: 'flex',
-    flexDirection: 'column' as 'column',
-    alignItems: 'center',
-  },
-  socialHeader: {
-    fontSize: '1.2rem',
-    marginBottom: '0.75rem',
-    color: '#007bff',
+  companyDescription: {
+    fontSize: '14px',
+    lineHeight: '1.5',
+    marginBottom: '1rem',
   },
   socialIcons: {
     display: 'flex',
     gap: '1rem',
   },
   icon: {
-    fontSize: '1.5rem',
+    fontSize: '30px',
     color: '#fff',
+    transition: 'color 0.3s ease',
     cursor: 'pointer',
-    transition: 'transform 0.3s ease',
+    border: '2px solid', // Set border style
+    borderRadius: '50%', // Makes the border circular
+    padding: '5px',      // Space between the icon and border
   },
-  '@media (hover: hover)': {
-    icon: {
-      ':hover': {
-        transform: 'scale(1.2)',
-        color: '#007bff',
-      },
-    },
+  facebookIcon: {
+    borderColor: '#3b5998', // Facebook color
+  },
+  tiktokIcon: {
+    borderColor: '#69C9D0', // TikTok color
+  },
+  contactSection: {
+    flex: '1',
+    maxWidth: '300px',
+    textAlign: 'left' as 'left', // Aligns text to the left
+    marginBottom: '1rem',
+  },
+  contactHeader: {
+    fontSize: '16px',
+    fontWeight: 'bold',
+    marginBottom: '0.75rem',
+  },
+  contactDetails: {
+    fontSize: '14px',
+    marginBottom: '0.5rem',
+  },
+  emailLink: {
+    color: '#d6c600',
+    textDecoration: 'none',
   },
 };
 

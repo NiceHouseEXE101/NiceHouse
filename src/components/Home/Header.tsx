@@ -68,14 +68,14 @@ const Header = () => {
                   <Nav.Link href="/" style={navLinkStyle(scrolling)}>
                     Home
                   </Nav.Link>
-                  <Nav.Link href="/about" style={navLinkStyle(scrolling)}>
-                    About
+                  <Nav.Link href="#about" style={navLinkStyle(scrolling)}>
+                    Chúng tôi
                   </Nav.Link>
-                  <Nav.Link href="/services" style={navLinkStyle(scrolling)}>
-                    Services
+                  <Nav.Link href="#services" style={navLinkStyle(scrolling)}>
+                    Dịch vụ
                   </Nav.Link>
-                  <Nav.Link href="/contact" style={navLinkStyle(scrolling)}>
-                    Contact
+                  <Nav.Link href="#contact" style={navLinkStyle(scrolling)}>
+                    Liên hệ
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
@@ -95,7 +95,7 @@ const Header = () => {
                 '&:hover': { backgroundColor: '#FF8500', color: '#fff' },
               }}
             >
-              Book Now
+              Đặt ngay
             </Button>
           </Box>
         </Toolbar>

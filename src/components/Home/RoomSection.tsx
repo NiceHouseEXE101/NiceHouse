@@ -127,7 +127,7 @@ const RoomCarouselSection = () => {
           letterSpacing: '0.1rem',
         }}
       >
-        NICEHOUSE ROOMS & SUITES
+        CÁC HẠNG PHÒNG
       </Typography>
       <RoomCarousel settings={settings}>
         {roomsData.map((room, index) => (

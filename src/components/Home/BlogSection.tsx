@@ -30,11 +30,13 @@ const BlogSection = () => {
     };
 
     const titleStyle = {
-        fontSize: '2.75rem',
+        fontSize: '2.4rem',
         fontWeight: '700',
-        color: '#333',
+        color: '#343a40',
         marginBottom: '3rem',
         letterSpacing: '1px',
+        fontFamily: 'Brice Regular SemiExpanded',
+        textTransform: 'Uppercase'
     };
 
     const gridStyle = {
@@ -118,7 +120,7 @@ const BlogSection = () => {
 
     return (
         <div style={sectionStyle}>
-            <h2 style={titleStyle}>Discover Beautiful Nearby Locations</h2>
+            <h2 style={titleStyle}>CẢNH ĐẸP QUANH KHU VỰC CHUNG CƯ</h2>
             <div style={gridStyle}>
                 {blogs.map((blog) => (
                     <div

@@ -45,12 +45,14 @@ const FacilitiesOffer: React.FC = () => {
       <Container>
         {/* Header Section */}
         <Row className="justify-content-center text-center mb-4">
-          <Col md={8}>
-            <Typography variant="h5" style={{ color: '#007bff', marginBottom: '10px' }}>
-              OFFERS
-            </Typography>
-            <Typography variant="h3" style={{ fontWeight: 'bold' }}>
-              NICEHOUSE’S LIMITED PERIOD <br /> BEST OFFERS
+          <Col md={8}>            
+            <Typography variant="h3" style={{ 
+                fontWeight: '700',
+                fontSize: '2.4rem',
+                fontFamily: 'Brice Regular SemiExpanded',
+                color: '#343a40',              
+              }}>
+              ƯU ĐÃI CÓ HẠN TỪ HÔM NAY<br /> GIẢM GIÁ CỰC SỐC
             </Typography>
           </Col>
         </Row>
@@ -64,7 +66,12 @@ const FacilitiesOffer: React.FC = () => {
                 alt="Double Suite Room"
               />
               <RoomPricing>25% off</RoomPricing>
-              <Typography variant="h6" className="mt-3">
+              <Typography variant="h6" className="mt-3" style={{
+                   fontSize: '1.3rem',
+                   fontFamily: 'Brice Regular SemiExpanded',
+                   color: '#343a40',       
+                   fontWeight: '700'       
+              }}>
                 Double Suite Room
               </Typography>
               <p>From: $200</p>
@@ -80,7 +87,12 @@ const FacilitiesOffer: React.FC = () => {
                 alt="Superior Bed Room"
               />
               <RoomPricing>28% off</RoomPricing>
-              <Typography variant="h6" className="mt-3">
+              <Typography variant="h6" className="mt-3" style={{
+                   fontSize: '1.3rem',
+                   fontFamily: 'Brice Regular SemiExpanded',
+                   color: '#343a40',       
+                   fontWeight: '700'       
+              }}>
                 Superior Bed Room
               </Typography>
               <p>From: $180</p>
@@ -96,7 +108,12 @@ const FacilitiesOffer: React.FC = () => {
                 alt="Deluxe Double Room"
               />
               <RoomPricing>35% off</RoomPricing>
-              <Typography variant="h6" className="mt-3">
+              <Typography variant="h6" className="mt-3" style={{
+                   fontSize: '1.3rem',
+                   fontFamily: 'Brice Regular SemiExpanded',
+                   color: '#343a40',       
+                   fontWeight: '700'       
+              }}>
                 Deluxe Double Room
               </Typography>
               <p>From: $220</p>

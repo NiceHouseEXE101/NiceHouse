@@ -31,14 +31,15 @@ const CustomerReviewsSection: React.FC = () => {
       textAlign: 'center',
     }}>
       <h2 style={{
-        fontSize: '36px',
-        color: '#333',
+        fontSize: '2.4rem',
+        color: '#343a40',
         marginBottom: '40px',
-        fontWeight: 'bold',
+        fontWeight: '700',
         textTransform: 'uppercase',
         letterSpacing: '1.5px',
+        fontFamily: '"Brice Regular SemiExpanded"'        
       }}>
-        Customer Reviews
+        ĐÁNH GIÁ KHÁCH HÀNG
       </h2>
 
       <div style={{
