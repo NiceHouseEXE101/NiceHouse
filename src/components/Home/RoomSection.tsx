@@ -118,6 +118,7 @@ const RoomCarouselSection = () => {
         variant="h4"
         align="center"
         sx={{
+          fontFamily: 'Brice Regular SemiExpanded',
           color: '#343a40',
           fontWeight: 'bold',
           mb: 4,
@@ -140,6 +141,7 @@ const RoomCarouselSection = () => {
               <Typography
                 variant="h6"
                 sx={{
+                  fontFamily: 'Brice Regular SemiExpanded',
                   color: '#343a40',
                   fontWeight: 'bold',
                   mt: 2,

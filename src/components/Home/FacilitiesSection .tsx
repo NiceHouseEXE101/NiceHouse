@@ -22,7 +22,7 @@ const BackgroundSection = styled(Box)({
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)', // Optional dark overlay for a luxurious feel
+    backgroundColor: 'rgba(0, 0, 0, 0.3)', // Optional dark overlay for a luxurious feel
     zIndex: -1,
   },
 });
@@ -83,7 +83,7 @@ const FacilitiesSection = () => {
       </Box>
 
       {/* Title and Description */}
-      <Title variant="h3">Luxurious Apartment Facilities</Title>
+      <Title variant="h3" sx={{fontFamily: 'Brice Regular SemiExpanded'}}>Luxurious Apartment Facilities</Title>
       <Description variant="body1">
         Indulge in our top-tier amenities, designed to provide unparalleled comfort and relaxation.
       </Description>
@@ -95,7 +95,7 @@ const FacilitiesSection = () => {
             <CardMedia component="img" height="200" image={PoolImage} alt="Infinity Pool" />
             <Overlay className="overlay">Infinity Pool</Overlay>
             <CardContent>
-              <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40' }}>
+              <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40',fontFamily: 'Brice Regular SemiExpanded' }}>
                 Infinity Pool
               </Typography>
               <Typography variant="body2" sx={{ color: '#6c757d' }}>
@@ -109,7 +109,7 @@ const FacilitiesSection = () => {
             <CardMedia component="img" height="200" image={SchoolImage} alt="Prestigious School" />
             <Overlay className="overlay">Prestigious School</Overlay>
             <CardContent>
-              <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40' }}>
+              <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40',fontFamily: 'Brice Regular SemiExpanded' }}>
                 Prestigious School
               </Typography>
               <Typography variant="body2" sx={{ color: '#6c757d' }}>
@@ -123,7 +123,7 @@ const FacilitiesSection = () => {
             <CardMedia component="img" height="200" image={GymImage} alt="Fitness Center" />
             <Overlay className="overlay">Fitness Center</Overlay>
             <CardContent>
-              <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40' }}>
+              <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40',fontFamily: 'Brice Regular SemiExpanded' }}>
                 Fitness Center
               </Typography>
               <Typography variant="body2" sx={{ color: '#6c757d' }}>

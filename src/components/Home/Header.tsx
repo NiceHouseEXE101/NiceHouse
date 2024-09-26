@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Button, Typography, Box } from '@mui/material';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import logo1 from '../../assets/logo/logo-notext-black.png'; // Ensure the correct path for the logo
 import logo2 from '../../assets/logo/logo-notext-white.png';
+import '../../font/Brice Regular SemiExpanded.otf'; // Import your font styles
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
@@ -46,6 +47,7 @@ const Header = () => {
             <Typography
               variant="h5"
               sx={{
+                fontFamily: 'Brice Regular SemiExpanded', // Apply the custom font
                 fontWeight: 600,
                 color: scrolling ? '#fff' : '#343a40', // Change text color when scrolling
                 letterSpacing: '1.5px',
@@ -62,7 +64,7 @@ const Header = () => {
             <Navbar bg="transparent" expand="lg">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto" style={navStyle}>
+                <Nav className="ml-auto" style={navStyle}  >
                   <Nav.Link href="#home" style={navLinkStyle(scrolling)}>
                     Home
                   </Nav.Link>
@@ -84,6 +86,7 @@ const Header = () => {
               variant="contained"
               color="secondary"
               sx={{
+                fontFamily: 'Brice Regular SemiExpanded',
                 backgroundColor: scrolling ? '#fff' : '#343a40',
                 color: scrolling ? '#343a40' : '#fff',
                 fontWeight: 'bold',
@@ -106,6 +109,7 @@ const navStyle = {
   display: 'flex',
   justifyContent: 'flex-end',
   alignItems: 'center',
+  
 };
 
 // Navigation link style with dynamic color based on scroll state

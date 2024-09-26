@@ -119,7 +119,7 @@ const IntroSection = () => {
   return (
     <Container>
       <LeftSection>
-        <Title>About NICEHOUSE</Title>
+        <Title sx={{fontFamily:'Brice Regular SemiExpanded'}}>About NICEHOUSE</Title>
         <Heading>Your Luxury Home Experience</Heading>
         <Description>
           Discover the epitome of luxurious living at NICEHOUSE. Our apartments are designed with elegance and sophistication, blending modern conveniences with timeless beauty. Enjoy stunning interiors, world-class amenities, and a serene environment that makes you feel at home.

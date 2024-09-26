@@ -4,7 +4,7 @@ import './App.css'
 import Header from './components/Home/Header';
 
 import Footer from './components/Home/Footer';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/Home/HomePage';
 
 const App: React.FC = () => {
   return (
