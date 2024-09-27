@@ -8,6 +8,7 @@ import HomePage from './pages/Home/HomePage';
 // import ContactPage from './pages/Contact/ContactPage';
 import ErrorPage from './pages/Error/ErrorPage';
 import LoadingSpinner from './components/Common/LoadingSpinner'; // Spinner component
+import ApartmentList from './pages/ApartmentList/ApartmentList';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -23,18 +24,23 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      
       {loading && <LoadingSpinner />} {/* Show spinner during loading */}
       {!loading && (
         <>
+        
           <Header /> {/* Always display header */}
           <Routes>
             <Route path="/" element={<HomePage />} /> {/* Home Page */}
 
             <Route path="*" element={<ErrorPage />} /> {/* Fallback 404 Page */}
+            <Route path="/apartment" element={<ApartmentList />} />
+ 
           </Routes>
           <Footer /> {/* Always display footer */}
         </>
       )}
+      
     </div>
   );
 };
