@@ -39,7 +39,7 @@ const CustomerReviewsSection: React.FC = () => {
         letterSpacing: '1.5px',
         fontFamily: '"Brice Regular SemiExpanded"'        
       }}>
-        ĐÁNH GIÁ KHÁCH HÀNG
+        ĐÁNH GIÁ CỦA KHÁCH HÀNG
       </h2>
 
       <div style={{

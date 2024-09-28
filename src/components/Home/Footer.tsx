@@ -20,7 +20,7 @@ const Footer = () => {
             <a href="https://www.facebook.com/NiceHouse7979" target="_blank" rel="noopener noreferrer">
               <FaFacebookF style={styles.icon} />
             </a>
-            <a href="https://www.tiktok.com/@nice.house30?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.tiktok.com/@nice.house.7979" target="_blank" rel="noopener noreferrer">
               <BsTiktok style={styles.icon} />
             </a>
           </div>

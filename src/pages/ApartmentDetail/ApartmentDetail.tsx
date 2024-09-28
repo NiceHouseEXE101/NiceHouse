@@ -151,6 +151,7 @@ const InfoRow = styled.div`
   p {
     font-size: 18px;
     margin-left: 10px;
+    margin-top: 15px;
     color: #343a40;
   }
 
@@ -217,7 +218,7 @@ const ScheduleButton = styled.button`
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 7px;
   transition: background-color 0.3s;
   &:hover {
     background-color: #FF8500;

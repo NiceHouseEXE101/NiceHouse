@@ -76,7 +76,7 @@ const FacilitiesOffer: React.FC = () => {
               </Typography>
               <p>From: $200</p>
               <p>4.5 (Review)</p>
-              <Button variant="primary">Book Now</Button>
+              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Book Now</Button>
             </ServiceItem>
           </Col>
 
@@ -97,7 +97,7 @@ const FacilitiesOffer: React.FC = () => {
               </Typography>
               <p>From: $180</p>
               <p>4.5 (Review)</p>
-              <Button variant="primary">Book Now</Button>
+              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Book Now</Button>
             </ServiceItem>
           </Col>
 
@@ -118,7 +118,7 @@ const FacilitiesOffer: React.FC = () => {
               </Typography>
               <p>From: $220</p>
               <p>4.5 (Review)</p>
-              <Button variant="primary">Book Now</Button>
+              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Book Now</Button>
             </ServiceItem>
           </Col>
         </Row>

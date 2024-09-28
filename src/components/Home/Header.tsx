@@ -28,7 +28,7 @@ const Header = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: scrolling ? '#343a40' : 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: scrolling ? '#343a40' : '#e9e9e9',
         transition: 'background-color 0.3s ease',
         boxShadow: scrolling ? '0 4px 20px rgba(0, 0, 0, 0.1)' : 'none',
         backdropFilter: 'blur(10px)', // Adds a subtle blur effect for transparency
@@ -66,7 +66,7 @@ const Header = () => {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto" style={navStyle}  >
                   <Nav.Link href="/" style={navLinkStyle(scrolling)}>
-                    Home
+                    Trang chủ
                   </Nav.Link>
                   <Nav.Link href="#about" style={navLinkStyle(scrolling)}>
                     Chúng tôi
