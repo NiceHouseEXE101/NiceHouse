@@ -602,7 +602,6 @@ const ApartmentList: React.FC = () => {
 
           <button 
   onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1} 
-  disabled={currentPage === 1} 
   style={{
     backgroundColor: '#343a40',
     color: '#ffffff', // White text for contrast

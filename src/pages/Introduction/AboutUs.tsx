@@ -1,5 +1,12 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import member1 from '../../assets/members/member1.jpg';
+import member2 from '../../assets/members/member1.jpg';
+import member3 from '../../assets/members/member1.jpg';
+import member4 from '../../assets/members/member1.jpg';
+import member5 from '../../assets/members/member1.jpg';
+import member6 from '../../assets/members/member1.jpg';
+
 
 // Keyframes for smooth entrance animations
 const fadeIn = keyframes`
@@ -13,13 +20,18 @@ const fadeIn = keyframes`
   }
 `;
 
+// Define the type for the TeamMember props
+interface TeamMemberProps {
+  index: number;
+}
+
 // Container for the whole About Us page
 const AboutUsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
+  padding: 100px 50px; /* Spaced to avoid being covered by header */
   max-width: 1200px;
   margin: auto;
   animation: ${fadeIn} 0.5s ease;
@@ -36,6 +48,7 @@ const TeamSection = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   flex: 1;
+  gap: 20px;
   
   @media (max-width: 768px) {
     flex-direction: column;
@@ -43,29 +56,32 @@ const TeamSection = styled.div`
   }
 `;
 
-// Individual team member container
-const TeamMember = styled.div`
+// Individual team member container with irregular shape
+const TeamMember = styled.div<TeamMemberProps>`
   margin: 20px;
   text-align: center;
-  width: 150px;
+  width: 180px;
+  transform: rotate(${props => (props.index % 2 === 0 ? '-5deg' : '5deg')});
   animation: ${fadeIn} 0.8s ease;
-
+  
   @media (max-width: 768px) {
     margin: 10px;
+    transform: none; /* Remove rotation on small screens for simplicity */
   }
 `;
 
-// Image style for team members
+// Image style with custom shape
 const TeamImage = styled.img`
   width: 100%;
-  height: 150px;
-  border-radius: 50%;
+  height: 180px;
+  clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%);
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -90,9 +106,9 @@ const InfoSection = styled.div`
 
 // Highlighted NICEHOUSE title
 const NicehouseTitle = styled.h1`
-  font-family: 'Brice Regular SemiExpanded', sans-serif;
+  font-family: 'Brice Regular SemiExpanded';
   font-size: 60px;
-  color: #007bff;
+  color: #343a40;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 
@@ -150,7 +166,7 @@ const PhoneNumber = styled.p`
   font-size: 20px;
   color: #007bff;
 `;
-
+const memberImages = [member1, member2, member3, member4, member5, member6];
 // Component for AboutUs page
 const AboutUs: React.FC = () => {
   return (
@@ -158,8 +174,8 @@ const AboutUs: React.FC = () => {
       {/* Left Side: Team Members */}
       <TeamSection>
         {['Member 1', 'Member 2', 'Member 3', 'Member 4', 'Member 5', 'Member 6'].map((name, index) => (
-          <TeamMember key={index}>
-            <TeamImage src={`https://via.placeholder.com/150?text=${name}`} alt={name} />
+          <TeamMember key={index} index={index}>
+            <TeamImage src={memberImages[index]} alt={name} />
             <MemberName>{name}</MemberName>
           </TeamMember>
         ))}
