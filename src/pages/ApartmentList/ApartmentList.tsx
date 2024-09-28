@@ -401,16 +401,16 @@ const FilterSelect = styled.select`
 const FilterButton = styled.button`
   width: 100%;
   padding: 10px;
-  background-color: #38b6ff;
+  background-color: #343a40;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 7px;
   cursor: pointer;
   font-family: Helvetica, sans-serif;
   font-size: 16px;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #FF8500;
   }
 `;
 
@@ -439,8 +439,11 @@ const Image = styled.img`
 
 const ApartmentName = styled.h3`
   font-size: 20px;
-  color: #38b6ff;
+  color: #343a40;
   margin-bottom: 8px;
+  font-weight: 700;
+  font-Family: Brice Regular SemiExpanded;
+  margin-Top: 20px;
 `;
 
 const ApartmentPrice = styled.p`
@@ -541,17 +544,44 @@ const ApartmentList: React.FC = () => {
       </Sidebar>
 
       <MainContent>
-        <SortBar>
-          <div>
-            <FaSortAmountDown style={{ marginRight: '8px' }} />
-            Sắp xếp theo:
-          </div>
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            <option value="price">Giá tăng dần</option>
-            <option value="price-desc">Giá giảm dần</option>
-            <option value="newest">Mới nhất</option>
-          </select>
-        </SortBar>
+        <SortBar style={{
+  display: 'flex',
+  alignItems: 'center',
+  padding: '10px',
+  backgroundColor: '#f8f9fa',
+  borderRadius: '10px',
+  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
+}}>
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: '#343a40'
+  }}>
+    <FaSortAmountDown style={{ marginRight: '8px', color: '#495057' }} />
+    Sắp xếp theo:
+  </div>
+  <select
+    value={sort}
+    onChange={(e) => setSort(e.target.value)}
+    style={{
+      marginLeft: '12px',
+      padding: '8px 12px',
+      borderRadius: '7px',
+      border: '1px solid #ced4da',
+      backgroundColor: '#fff',
+      color: '#495057',
+      fontSize: '14px',
+      cursor: 'pointer'
+    }}
+  >
+    <option value="price">Giá tăng dần</option>
+    <option value="price-desc">Giá giảm dần</option>
+    <option value="newest">Mới nhất</option>
+  </select>
+</SortBar>
+
 
         {/* Apartment List */}
         <ApartmentGrid>
@@ -568,11 +598,57 @@ const ApartmentList: React.FC = () => {
 
         {/* Pagination */}
         <Pagination>
-          <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+          {/* <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}> */}
+
+          <button 
+  onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1} 
+  disabled={currentPage === 1} 
+  style={{
+    backgroundColor: '#343a40',
+    color: '#ffffff', // White text for contrast
+    border: 'none',   // Remove default border
+    padding: '10px 15px', // Add some padding
+    borderRadius: '4px', // Rounded corners
+    cursor: currentPage === 1 ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
+    opacity: currentPage === 1 ? 0.6 : 1 // Slightly transparent when disabled
+  }}
+
+  onMouseEnter={(e) => {
+    if (indexOfFirstApartment < apartments.length) {
+      e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
+    }
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
+  }}
+>
             <FaArrowLeft />
           </button>
           <span>Trang {currentPage}</span>
-          <button onClick={() => setCurrentPage(currentPage + 1)} disabled={indexOfLastApartment >= apartments.length}>
+          {/* <button onClick={() => setCurrentPage(currentPage + 1)} disabled={indexOfLastApartment >= apartments.length}> */}
+
+          <button
+  onClick={() => setCurrentPage(currentPage + 1)}
+  disabled={indexOfLastApartment >= apartments.length}
+  style={{
+    backgroundColor: '#343a40', // Dark background
+    color: '#ffffff', // White text for contrast
+    border: 'none', // Remove default border
+    padding: '10px 15px', // Add padding for better touch target
+    borderRadius: '4px', // Rounded corners
+    cursor: indexOfLastApartment >= apartments.length ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
+    opacity: indexOfLastApartment >= apartments.length ? 0.6 : 1, // Slightly transparent when disabled
+    transition: 'background-color 0.3s, transform 0.2s', // Smooth transitions for hover effects
+  }}
+  onMouseEnter={(e) => {
+    if (indexOfLastApartment < apartments.length) {
+      e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
+    }
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
+  }}
+>
             <FaArrowRight />
           </button>
         </Pagination>

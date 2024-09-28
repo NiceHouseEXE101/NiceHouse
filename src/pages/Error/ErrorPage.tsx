@@ -32,7 +32,7 @@ const ErrorIcon = styled(FaExclamationTriangle)`
 
 const ErrorTitle = styled.h1`
   font-size: 96px;
-  color: #007bff;
+  color: #343a40;
   margin-bottom: 20px;
   font-family: 'Brice Regular SemiExpanded', sans-serif;
   letter-spacing: 2px;
@@ -49,17 +49,17 @@ const ErrorDescription = styled.p`
 
 const BackButton = styled(Link)`
   padding: 15px 30px;
-  background-color: #007bff;
+  background-color: #343a40;
   color: #fff;
   border-radius: 50px;
   text-decoration: none;
   font-size: 18px;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+  box-shadow: #495057;
 
   &:hover {
-    background-color: #0056b3;
-    box-shadow: 0 15px 25px rgba(0, 123, 255, 0.5);
+    background-color: #495057;
+    box-shadow: #495057;
   }
 `;
 

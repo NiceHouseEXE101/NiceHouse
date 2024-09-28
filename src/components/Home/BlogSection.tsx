@@ -120,7 +120,7 @@ const BlogSection = () => {
 
     return (
         <div style={sectionStyle}>
-            <h2 style={titleStyle}>CẢNH ĐẸP QUANH KHU VỰC CHUNG CƯ</h2>
+            <h2 style={titleStyle}>CẢNH ĐẸP QUANH KHU CHUNG CƯ</h2>
             <div style={gridStyle}>
                 {blogs.map((blog) => (
                     <div

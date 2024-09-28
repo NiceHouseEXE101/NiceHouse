@@ -81,8 +81,8 @@ const LoadingSpinner: React.FC = () => {
   return (
     <SpinnerContainer>
       <Loader />
-      <LoadingText>Preparing your dream space...</LoadingText>
-      <Tagline>Where luxury meets comfort</Tagline>
+      <LoadingText>Đợi NICEHOUSE một chút nhé !!!</LoadingText>
+      <Tagline>Chúng tôi đang chuẩn bị nội dung cho bạn</Tagline>
     </SpinnerContainer>
   );
 };
