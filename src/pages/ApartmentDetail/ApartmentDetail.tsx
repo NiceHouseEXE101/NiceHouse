@@ -160,6 +160,70 @@ const InfoRow = styled.div`
   }
 `;
 
+const Modal = styled.div<{ show: boolean }>`
+  display: ${({ show }) => (show ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: white;
+  padding: 20px;
+  margin: 100px auto;
+  max-width: 500px;
+  border-radius: 8px;
+  animation: ${fadeIn} 0.3s ease;
+  position: relative;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+`;
+
+const InputField = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+`;
+
+const SubmitButton = styled.button`
+  background-color: #343a40;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+`;
+
+const ScheduleButton = styled.button`
+  background-color: #343a40;
+  border: 1.5px dashed #343a40;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #FF8500;
+  }
+  margin-top: 40px;
+`;
 const fetchApartmentDetails = async (id: number) => {
   // Replace with actual API request or sample data
   return sampleData;
@@ -169,7 +233,8 @@ const ApartmentDetail: React.FC<{ id: number }> = ({ id }) => {
   const [apartment, setApartment] = useState<any>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isVideo, setIsVideo] = useState<boolean>(false);
-
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({ fullName: '', phone: '', date: '' });
   useEffect(() => {
     // Fetch apartment details from API or sample data
     fetchApartmentDetails(id).then((data) => {
@@ -180,6 +245,16 @@ const ApartmentDetail: React.FC<{ id: number }> = ({ id }) => {
 
   if (!apartment) return <p>Loading...</p>;
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+ const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('User Data:', formData); // Replace this with API call
+    setShowModal(false);
+  };
   return (
     <Container>
       <MainContent>
@@ -246,6 +321,42 @@ const ApartmentDetail: React.FC<{ id: number }> = ({ id }) => {
             <FaSwimmingPool />
             <p>Amenities: {apartment.amenities.join(", ")}</p>
           </InfoRow>
+            {/* Booking button */}
+      <ScheduleButton onClick={() => setShowModal(true)}>Đặt Lịch và Tư Vấn</ScheduleButton>
+
+         {/* Modal for Booking Form */}
+      <Modal show={showModal}>
+        <ModalContent>
+          <CloseButton onClick={() => setShowModal(false)}>X</CloseButton>
+          <h2>Đặt Lịch và Liên Hệ</h2>
+          <form onSubmit={handleSubmit}>
+            <InputField
+              type="text"
+              name="fullName"
+              placeholder="Họ và Tên"
+              value={formData.fullName}
+              onChange={handleInputChange}
+              required
+            />
+            <InputField
+              type="tel"
+              name="phone"
+              placeholder="Số Điện Thoại"
+              value={formData.phone}
+              onChange={handleInputChange}
+              required
+            />
+            <InputField
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleInputChange}
+              required
+            />
+            <SubmitButton type="submit">Gửi Thông Tin</SubmitButton>
+          </form>
+        </ModalContent>
+      </Modal>
         </DetailsSection>
       </MainContent>
     </Container>
@@ -253,3 +364,6 @@ const ApartmentDetail: React.FC<{ id: number }> = ({ id }) => {
 };
 
 export default ApartmentDetail;
+ 
+
+
