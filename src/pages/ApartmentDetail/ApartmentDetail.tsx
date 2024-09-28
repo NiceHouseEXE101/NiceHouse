@@ -322,7 +322,7 @@ const ApartmentDetail: React.FC<{ id: number }> = ({ id }) => {
             <p>Amenities: {apartment.amenities.join(", ")}</p>
           </InfoRow>
             {/* Booking button */}
-      <ScheduleButton onClick={() => setShowModal(true)}>Đặt Lịch và Tư Vấn</ScheduleButton>
+      <ScheduleButton onClick={() => setShowModal(true)}>Xem ngay</ScheduleButton>
 
          {/* Modal for Booking Form */}
       <Modal show={showModal}>
