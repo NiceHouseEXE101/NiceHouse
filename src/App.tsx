@@ -9,6 +9,7 @@ import HomePage from './pages/Home/HomePage';
 import ErrorPage from './pages/Error/ErrorPage';
 import LoadingSpinner from './components/Common/LoadingSpinner'; // Spinner component
 import ApartmentList from './pages/ApartmentList/ApartmentList';
+import ApartmentDetail from './pages/ApartmentDetail/ApartmentDetail';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -35,7 +36,7 @@ const App: React.FC = () => {
 
             <Route path="*" element={<ErrorPage />} /> {/* Fallback 404 Page */}
             <Route path="/apartment" element={<ApartmentList />} />
- 
+            <Route path="/apartment-detail" element={<ApartmentDetail />} />
           </Routes>
           <Footer /> {/* Always display footer */}
         </>
