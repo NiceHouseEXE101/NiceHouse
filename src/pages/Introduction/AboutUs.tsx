@@ -135,16 +135,16 @@ const ButtonGroup = styled.div`
 const Button = styled.button`
   padding: 12px 20px;
   border-radius: 25px;
-  border: 2px solid #007bff;
+  border: 2px solid #343a40;
   background-color: transparent;
-  color: #007bff;
+  color: #343a40;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
-    background-color: #007bff;
+    background-color: #343a40;
     color: #fff;
   }
 `;
@@ -164,7 +164,7 @@ const InquiryTitle = styled.h3`
 
 const PhoneNumber = styled.p`
   font-size: 20px;
-  color: #007bff;
+  color: #343a40;
 `;
 const memberImages = [member1, member2, member3, member4, member5, member6];
 // Component for AboutUs page

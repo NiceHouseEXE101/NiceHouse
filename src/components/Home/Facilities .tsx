@@ -107,7 +107,10 @@ const FacilitiesTitle = styled(Typography)`
   margin-bottom: 60px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Brice Regular SemiExpanded', sans-serif;
+  @media (max-width: 960px) {
+    font-size: 32px; 
+  }
 `;
 
 // Facility Title
@@ -116,7 +119,6 @@ const FacilityTitle = styled(Typography)`
   font-weight: 600;
   color: #333;
   margin-bottom: 20px;
-  font-family: 'Poppins', sans-serif;
 `;
 
 // Description Styling
@@ -126,6 +128,9 @@ const Description = styled(Typography)`
   line-height: 1.8;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.5px;
+ @media (max-width: 960px) {
+    font-size: 18px; 
+  }
 `;
 
 // Individual facility item with image and description
@@ -145,34 +150,34 @@ const FacilityItem = ({ imageSrc, title, description, reverse }) => {
 
 const Facilities = () => {
   return (
-    <FacilitiesContainer>
-      <FacilitiesTitle sx={
-        {
-          fontSize: '2.4rem',
-          fontFamily: 'Brice Regular SemiExpanded',
-          fontWeight: '700',
-          color: '#343a40'
-        }
-      }>Tiện nghi chất lượng cao</FacilitiesTitle>
-      <FacilityItem
-        imageSrc={PoolImage}
-        title="Hồ bơi trong nhà"
-        description="Thư giãn và ngắm nhìn phong cảnh từ trên cao."
-        reverse={false}
-      />
-      <FacilityItem
-        imageSrc={FitnessImage}
-        title="Phòng Gym"
-        description="Tập luyện không cần di chuyển xa."
-        reverse={true}
-      />
-      <FacilityItem
-        imageSrc={GardenImage}
-        title="Quán cafe view đẹp"
-        description="Tận hưởng khung cảnh tuyệt đẹp từ tầng thượng của chung cư."
-        reverse={false}
-      />
-    </FacilitiesContainer>
+      <FacilitiesContainer>
+        <FacilitiesTitle sx={
+          {
+            fontSize: '2.4rem',
+            fontFamily: 'Brice Regular SemiExpanded',
+            fontWeight: '700',
+            color: '#343a40'
+          }
+        }>Tiện nghi chất lượng cao</FacilitiesTitle>
+        <FacilityItem
+          imageSrc={PoolImage}
+          title="Hồ bơi trong nhà"
+          description="Thư giãn và ngắm nhìn phong cảnh từ trên cao."
+          reverse={false}
+        />
+        <FacilityItem
+          imageSrc={FitnessImage}
+          title="Phòng Gym"
+          description="Tập luyện không cần di chuyển xa."
+          reverse={true}
+        />
+        <FacilityItem
+          imageSrc={GardenImage}
+          title="Quán cafe view đẹp"
+          description="Tận hưởng khung cảnh tuyệt đẹp từ tầng thượng của chung cư."
+          reverse={false}
+        />
+      </FacilitiesContainer>
   );
 };
 
