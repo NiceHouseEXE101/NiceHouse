@@ -71,7 +71,7 @@ const Header = () => {
                   <Nav.Link href="/about" style={navLinkStyle(scrolling)}>
                     Chúng tôi
                   </Nav.Link>
-                  <Nav.Link href="/services" style={navLinkStyle(scrolling)}>
+                  <Nav.Link href="/apartment" style={navLinkStyle(scrolling)}>
                     Dịch vụ
                   </Nav.Link>
                   <Nav.Link href="/contact" style={navLinkStyle(scrolling)}>

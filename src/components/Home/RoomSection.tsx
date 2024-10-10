@@ -3,7 +3,23 @@ import { Container, Typography, Box } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import image1 from '../../assets/carousels/1.png';
+import APT_1 from '../../assets/rooms/APT_1.jpg';
+import APT_2 from '../../assets/rooms/APT_2.jpg';
+import APT_3 from '../../assets/rooms/APT_3.jpg';
+import APT_4 from '../../assets/rooms/APT_4.jpg';
+import APT_5 from '../../assets/rooms/APT_5.jpg';
+import APT_6 from '../../assets/rooms/APT_6.jpg';
+import APT_7 from '../../assets/rooms/APT_7.jpg';
+import APT_8 from '../../assets/rooms/APT_8.jpg';
+import APT_9 from '../../assets/rooms/APT_9.jpg';
+import Vina_1 from '../../assets/rooms/Vina_1.jpg';
+import Vina_2 from '../../assets/rooms/Vina_2.jpg';
+import Vina_3 from '../../assets/rooms/Vina_3.jpg';
+import Vina_4 from '../../assets/rooms/Vina_4.jpg';
+import Vina_5 from '../../assets/rooms/Vina_5.jpg';
+import Vina_6 from '../../assets/rooms/Vina_6.jpg';
+import Vina_7 from '../../assets/rooms/Vina_7.jpg';
+import Vina_8 from '../../assets/rooms/Vina_8.jpg';
 
 const RoomCarousel = ({ settings, children }: any) => {
   return (
@@ -15,23 +31,7 @@ const RoomCarousel = ({ settings, children }: any) => {
 
 const roomsData = [
   {
-    image: image1,
-    name: 'Luxury Suite',
-    price: '$200/night',
-    area: '55 sqm',
-    beds: '2 King Beds',
-    rating: 5,
-  },
-  {
-    image: image1,
-    name: 'Deluxe Room',
-    price: '$150/night',
-    area: '40 sqm',
-    beds: '1 King Bed',
-    rating: 4,
-  },
-  {
-    image: image1,
+    image: APT_3,
     name: 'Standard Room',
     price: '$100/night',
     area: '30 sqm',
@@ -39,12 +39,38 @@ const roomsData = [
     rating: 3,
   },
   {
-    image: image1,
+    image: APT_4,
     name: 'Penthouse Suite',
     price: '$350/night',
     area: '80 sqm',
     beds: '3 King Beds',
     rating: 5,
+  },
+
+  {
+    image: APT_6,
+    name: 'Deluxe Room',
+    price: '$150/night',
+    area: '40 sqm',
+    beds: '1 King Bed',
+    rating: 4,
+  },
+
+  {
+    image: APT_8,
+    name: 'Penthouse Suite',
+    price: '$350/night',
+    area: '80 sqm',
+    beds: '3 King Beds',
+    rating: 5,
+  },
+  {
+    image: Vina_1,
+    name: 'Deluxe Room',
+    price: '$150/night',
+    area: '40 sqm',
+    beds: '1 King Bed',
+    rating: 4,
   },
 ];
 

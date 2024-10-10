@@ -1,261 +1,8 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import styled from 'styled-components';
-
-// const Container = styled.div`
-//   display: flex;
-//   padding: 20px;
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   @media (max-width: 768px) {
-//     flex-direction: column;
-//     padding: 10px;
-//   }
-// `;
-
-// const Sidebar = styled.div`
-//   flex: 1;
-//   background-color: #f8f9fa;
-//   padding: 20px;
-//   margin-right: 20px;
-//   border-radius: 8px;
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-//   @media (max-width: 768px) {
-//     margin-right: 0;
-//     margin-bottom: 20px;
-//   }
-// `;
-
-// const MainContent = styled.div`
-//   flex: 3;
-//   display: flex;
-//   flex-direction: column;
-// `;
-
-// const SortBar = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   margin-bottom: 20px;
-// `;
-
-// const ApartmentGrid = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   gap: 20px;
-//   @media (max-width: 992px) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-//   @media (max-width: 768px) {
-//     grid-template-columns: repeat(1, 1fr);
-//   }
-// `;
-
-// const Pagination = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 20px;
-// `;
-
-// const FilterSection = styled.div`
-//   margin-bottom: 20px;
-// `;
-
-// const FilterLabel = styled.label`
-//   font-size: 16px;
-//   color: #343a40;
-//   margin-bottom: 10px;
-//   display: block;
-//   font-family: 'Helvetica', sans-serif;
-// `;
-
-// const FilterInput = styled.input`
-//   width: 100%;
-//   padding: 10px;
-//   border: 1px solid #ced4da;
-//   border-radius: 4px;
-//   margin-bottom: 10px;
-//   font-family: 'Helvetica', sans-serif;
-// `;
-
-// const FilterSelect = styled.select`
-//   width: 100%;
-//   padding: 10px;
-//   border: 1px solid #ced4da;
-//   border-radius: 4px;
-//   margin-bottom: 10px;
-//   font-family: 'Helvetica', sans-serif;
-// `;
-
-// const Card = styled.div`
-//   background-color: #ffffff;
-//   border-radius: 8px;
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-//   padding: 20px;
-//   text-align: center;
-//   transition: transform 0.3s ease;
-
-//   &:hover {
-//     transform: scale(1.05);
-//   }
-// `;
-
-// const Image = styled.img`
-//   width: 100%;
-//   height: 200px;
-//   object-fit: cover;
-//   border-radius: 8px;
-// `;
-
-// const ApartmentName = styled.h3`
-//   font-size: 20px;
-//   color: #007bff;
-// `;
-
-// const ApartmentPrice = styled.p`
-//   font-size: 18px;
-//   color: #343a40;
-// `;
-
-// const ApartmentList: React.FC = () => {
-//   const [apartments, setApartments] = useState<any[]>([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState('');
-//   const [filters, setFilters] = useState({ price: '', bedrooms: '', area: '' });
-//   const [filterOptions, setFilterOptions] = useState({ areas: [], bedrooms: [] });
-//   const [sort, setSort] = useState('price');
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const apartmentsPerPage = 9;
-
-//   // Fetch filter options from API
-//   useEffect(() => {
-//     const fetchFilterOptions = async () => {
-//       try {
-//         const response = await axios.get('https://your-api-url.com/filters'); // API to get filter options
-//         setFilterOptions({
-//           areas: response.data.areas,
-//           bedrooms: response.data.bedrooms,
-//         });
-//       } catch (err) {
-//         console.error('Error fetching filter options:', err);
-//       }
-//     };
-//     fetchFilterOptions();
-//   }, []);
-
-//   // Fetch apartments with filters, sorting, and pagination
-//   useEffect(() => {
-//     const loadApartments = async () => {
-//       try {
-//         setLoading(true);
-//         const response = await axios.get('https://your-api-url.com/apartments', {
-//           params: {
-//             page: currentPage,
-//             limit: apartmentsPerPage,
-//             sort,
-//             ...filters,
-//           },
-//         });
-//         setApartments(response.data.apartments); // Assuming the API response contains a "apartments" field
-//         setLoading(false);
-//       } catch (err) {
-//         setError('Failed to load apartments');
-//         setLoading(false);
-//       }
-//     };
-//     loadApartments();
-//   }, [filters, sort, currentPage]);
-
-//   if (loading) return <div>Loading...</div>;
-//   if (error) return <div>{error}</div>;
-
-//   return (
-//     <Container>
-//       <Sidebar>
-//         {/* Filters */}
-//         <FilterSection>
-//           <FilterLabel>Bedrooms</FilterLabel>
-//           <FilterSelect
-//             value={filters.bedrooms}
-//             onChange={(e) => setFilters({ ...filters, bedrooms: e.target.value })}
-//           >
-//             <option value="">Any</option>
-//             {filterOptions.bedrooms.map((bedroom: string, index: number) => (
-//               <option key={index} value={bedroom}>
-//                 {bedroom} Bedrooms
-//               </option>
-//             ))}
-//           </FilterSelect>
-//         </FilterSection>
-//         <FilterSection>
-//           <FilterLabel>Max Price</FilterLabel>
-//           <FilterInput
-//             type="number"
-//             value={filters.price}
-//             onChange={(e) => setFilters({ ...filters, price: e.target.value })}
-//             placeholder="Enter max price"
-//           />
-//         </FilterSection>
-//         <FilterSection>
-//           <FilterLabel>Area</FilterLabel>
-//           <FilterSelect
-//             value={filters.area}
-//             onChange={(e) => setFilters({ ...filters, area: e.target.value })}
-//           >
-//             <option value="">Any</option>
-//             {filterOptions.areas.map((area: string, index: number) => (
-//               <option key={index} value={area}>
-//                 {area}
-//               </option>
-//             ))}
-//           </FilterSelect>
-//         </FilterSection>
-//       </Sidebar>
-
-//       <MainContent>
-//         {/* Sort */}
-//         <SortBar>
-//           <FilterLabel>Sort by</FilterLabel>
-//           <FilterSelect value={sort} onChange={(e) => setSort(e.target.value)}>
-//             <option value="price">Price: Low to High</option>
-//             <option value="price-desc">Price: High to Low</option>
-//             <option value="newest">Newest Listings</option>
-//           </FilterSelect>
-//         </SortBar>
-
-//         {/* Apartment List */}
-//         <ApartmentGrid>
-//           {apartments.map((apartment) => (
-//             <Card key={apartment.id}>
-//               <Image src={apartment.image} alt={apartment.name} />
-//               <ApartmentName>{apartment.name}</ApartmentName>
-//               <ApartmentPrice>${apartment.price}/month</ApartmentPrice>
-//               <p>{apartment.bedrooms} Bedrooms</p>
-//               <p>{apartment.area}</p>
-//             </Card>
-//           ))}
-//         </ApartmentGrid>
-
-//         {/* Pagination */}
-//         <Pagination>
-//           <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-//             Previous
-//           </button>
-//           <span> Page {currentPage} </span>
-//           <button
-//             onClick={() => setCurrentPage(currentPage + 1)}
-//             disabled={apartments.length < apartmentsPerPage}
-//           >
-//             Next
-//           </button>
-//         </Pagination>
-//       </MainContent>
-//     </Container>
-//   );
-// };
 
 // export default ApartmentList;
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
+import axios from 'axios';
 import { FaSortAmountDown, FaFilter, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import image from '../../assets/carousels/3.png';
 
@@ -451,46 +198,44 @@ const ApartmentPrice = styled.p`
   color: #343a40;
 `;
 
-// Sample data for apartments
-const sampleApartments = [
-  { id: 1, name: 'Apartment A', price: '5,500,000', bedrooms: 2, area: 'Downtown', image: image },
-  { id: 2, name: 'Apartment B', price: '7,500,000', bedrooms: 3, area: 'Uptown', image: 'https://via.placeholder.com/400x300' },
-  { id: 3, name: 'Apartment C', price: '4,500,000', bedrooms: 1, area: 'Suburb', image: 'https://via.placeholder.com/400x300' },
-   { id: 4, name: 'Apartment A', price: '5,500,000', bedrooms: 2, area: 'Downtown', image: image },
-  { id: 5, name: 'Apartment B', price: '7,500,000', bedrooms: 3, area: 'Uptown', image: 'https://via.placeholder.com/400x300' },
-  { id: 6, name: 'Apartment C', price: '4,500,000', bedrooms: 1, area: 'Suburb', image: 'https://via.placeholder.com/400x300' },
-   { id: 7, name: 'Apartment A', price: '5,500,000', bedrooms: 2, area: 'Downtown', image: image },
-  { id: 8, name: 'Apartment B', price: '7,500,000', bedrooms: 3, area: 'Uptown', image: 'https://via.placeholder.com/400x300' },
-  { id: 9, name: 'Apartment C', price: '4,500,000', bedrooms: 1, area: 'Suburb', image: 'https://via.placeholder.com/400x300' },
-   { id: 10, name: 'Apartment A', price: '5,500,000', bedrooms: 2, area: 'Downtown', image: image },
-  { id: 11, name: 'Apartment B', price: '7,500,000', bedrooms: 3, area: 'Uptown', image: 'https://via.placeholder.com/400x300' },
-  { id: 12, name: 'Apartment C', price: '4,500,000', bedrooms: 1, area: 'Suburb', image: 'https://via.placeholder.com/400x300' },
-   { id: 13, name: 'Apartment A', price: '5,500,000', bedrooms: 2, area: 'Downtown', image: image },
-  { id: 14, name: 'Apartment B', price: '7,500,000', bedrooms: 3, area: 'Uptown', image: 'https://via.placeholder.com/400x300' },
-  { id: 15, name: 'Apartment C', price: '4,500,000', bedrooms: 1, area: 'Suburb', image: 'https://via.placeholder.com/400x300' },
-  // Add more sample apartments here
-];
 
 // Main component
 const ApartmentList: React.FC = () => {
-  const [apartments, setApartments] = useState(sampleApartments);
+  const [apartments, setApartments] = useState<any[]>([]);
   const [filters, setFilters] = useState({ price: '', bedrooms: '', area: '' });
   const [sort, setSort] = useState('price');
   const [currentPage, setCurrentPage] = useState(1);
   const apartmentsPerPage = 9;
 
-  // Sorting logic
   useEffect(() => {
-    let sortedApartments = [...sampleApartments];
-    if (sort === 'price') {
-      sortedApartments.sort((a, b) => parseInt(a.price.replace(/,/g, '')) - parseInt(b.price.replace(/,/g, '')));
-    } else if (sort === 'price-desc') {
-      sortedApartments.sort((a, b) => parseInt(b.price.replace(/,/g, '')) - parseInt(a.price.replace(/,/g, '')));
-    } else if (sort === 'newest') {
-      sortedApartments.reverse();
-    }
-    setApartments(sortedApartments);
-  }, [sort]);
+    // Fetch all apartments from the API
+    const fetchAllApartments = async () => {
+      try {
+        const response = await axios.get('https://nicehouse-api.azurewebsites.net/api/hotel/all');
+        setApartments(response.data);
+      } catch (error) {
+        console.error('Error fetching apartments:', error);
+      }
+    };
+    fetchAllApartments();
+  }, []);
+
+  const transformGoogleDriveLink = (url: string) => {
+    const fileIdMatch = url.match(/\/d\/(.*?)\//);
+    return fileIdMatch ? `https://drive.google.com/uc?export=view&id=${fileIdMatch[1]}` : url;
+  };
+  // Sorting logic
+  // useEffect(() => {
+  //   let sortedApartments = [...sampleApartments];
+  //   if (sort === 'price') {
+  //     sortedApartments.sort((a, b) => parseInt(a.price.replace(/,/g, '')) - parseInt(b.price.replace(/,/g, '')));
+  //   } else if (sort === 'price-desc') {
+  //     sortedApartments.sort((a, b) => parseInt(b.price.replace(/,/g, '')) - parseInt(a.price.replace(/,/g, '')));
+  //   } else if (sort === 'newest') {
+  //     sortedApartments.reverse();
+  //   }
+  //   setApartments(sortedApartments);
+  // }, [sort]);
 
   // Pagination logic
   const indexOfLastApartment = currentPage * apartmentsPerPage;
@@ -545,53 +290,53 @@ const ApartmentList: React.FC = () => {
 
       <MainContent>
         <SortBar style={{
-  display: 'flex',
-  alignItems: 'center',
-  padding: '10px',
-  backgroundColor: '#f8f9fa',
-  borderRadius: '10px',
-  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
-}}>
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    color: '#343a40'
-  }}>
-    <FaSortAmountDown style={{ marginRight: '8px', color: '#495057' }} />
-    Sắp xếp theo:
-  </div>
-  <select
-    value={sort}
-    onChange={(e) => setSort(e.target.value)}
-    style={{
-      marginLeft: '12px',
-      padding: '8px 12px',
-      borderRadius: '7px',
-      border: '1px solid #ced4da',
-      backgroundColor: '#fff',
-      color: '#495057',
-      fontSize: '14px',
-      cursor: 'pointer'
-    }}
-  >
-    <option value="price">Giá tăng dần</option>
-    <option value="price-desc">Giá giảm dần</option>
-    <option value="newest">Mới nhất</option>
-  </select>
-</SortBar>
+          display: 'flex',
+          alignItems: 'center',
+          padding: '10px',
+          backgroundColor: '#f8f9fa',
+          borderRadius: '10px',
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            color: '#343a40'
+          }}>
+            <FaSortAmountDown style={{ marginRight: '8px', color: '#495057' }} />
+            Sắp xếp theo:
+          </div>
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+            style={{
+              marginLeft: '12px',
+              padding: '8px 12px',
+              borderRadius: '7px',
+              border: '1px solid #ced4da',
+              backgroundColor: '#fff',
+              color: '#495057',
+              fontSize: '14px',
+              cursor: 'pointer'
+            }}
+          >
+            <option value="price">Giá tăng dần</option>
+            <option value="price-desc">Giá giảm dần</option>
+            <option value="newest">Mới nhất</option>
+          </select>
+        </SortBar>
 
 
         {/* Apartment List */}
         <ApartmentGrid>
           {currentApartments.map((apartment) => (
-            <Card key={apartment.id}>
-              <Image src={apartment.image} alt={apartment.name} />
+            <Card key={apartment.hotelId}>
+              <Image src='https://nicehouse.blob.core.windows.net/avatar/00000000-0000-0000-0000-000000000000' alt={apartment.name} />
               <ApartmentName>{apartment.name}</ApartmentName>
               <ApartmentPrice>{apartment.price} VND</ApartmentPrice>
-              <p>{apartment.bedrooms} phòng ngủ</p>
-              <p>{apartment.area}</p>
+              <p>{apartment.rooms} phòng ngủ</p>
+              <p>{apartment.address}</p>
             </Card>
           ))}
         </ApartmentGrid>
@@ -600,54 +345,54 @@ const ApartmentList: React.FC = () => {
         <Pagination>
           {/* <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}> */}
 
-          <button 
-  onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1} 
-  style={{
-    backgroundColor: '#343a40',
-    color: '#ffffff', // White text for contrast
-    border: 'none',   // Remove default border
-    padding: '10px 15px', // Add some padding
-    borderRadius: '4px', // Rounded corners
-    cursor: currentPage === 1 ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
-    opacity: currentPage === 1 ? 0.6 : 1 // Slightly transparent when disabled
-  }}
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}
+            style={{
+              backgroundColor: '#343a40',
+              color: '#ffffff', // White text for contrast
+              border: 'none',   // Remove default border
+              padding: '10px 15px', // Add some padding
+              borderRadius: '4px', // Rounded corners
+              cursor: currentPage === 1 ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
+              opacity: currentPage === 1 ? 0.6 : 1 // Slightly transparent when disabled
+            }}
 
-  onMouseEnter={(e) => {
-    if (indexOfFirstApartment < apartments.length) {
-      e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
-    }
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
-  }}
->
+            onMouseEnter={(e) => {
+              if (indexOfFirstApartment < apartments.length) {
+                e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
+            }}
+          >
             <FaArrowLeft />
           </button>
           <span>Trang {currentPage}</span>
           {/* <button onClick={() => setCurrentPage(currentPage + 1)} disabled={indexOfLastApartment >= apartments.length}> */}
 
           <button
-  onClick={() => setCurrentPage(currentPage + 1)}
-  disabled={indexOfLastApartment >= apartments.length}
-  style={{
-    backgroundColor: '#343a40', // Dark background
-    color: '#ffffff', // White text for contrast
-    border: 'none', // Remove default border
-    padding: '10px 15px', // Add padding for better touch target
-    borderRadius: '4px', // Rounded corners
-    cursor: indexOfLastApartment >= apartments.length ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
-    opacity: indexOfLastApartment >= apartments.length ? 0.6 : 1, // Slightly transparent when disabled
-    transition: 'background-color 0.3s, transform 0.2s', // Smooth transitions for hover effects
-  }}
-  onMouseEnter={(e) => {
-    if (indexOfLastApartment < apartments.length) {
-      e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
-    }
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
-  }}
->
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={indexOfLastApartment >= apartments.length}
+            style={{
+              backgroundColor: '#343a40', // Dark background
+              color: '#ffffff', // White text for contrast
+              border: 'none', // Remove default border
+              padding: '10px 15px', // Add padding for better touch target
+              borderRadius: '4px', // Rounded corners
+              cursor: indexOfLastApartment >= apartments.length ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
+              opacity: indexOfLastApartment >= apartments.length ? 0.6 : 1, // Slightly transparent when disabled
+              transition: 'background-color 0.3s, transform 0.2s', // Smooth transitions for hover effects
+            }}
+            onMouseEnter={(e) => {
+              if (indexOfLastApartment < apartments.length) {
+                e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
+            }}
+          >
             <FaArrowRight />
           </button>
         </Pagination>
