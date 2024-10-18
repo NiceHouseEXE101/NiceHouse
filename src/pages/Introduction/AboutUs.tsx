@@ -74,7 +74,7 @@ const TeamMember = styled.div<TeamMemberProps>`
 const TeamImage = styled.img`
   width: 100%;
   height: 180px;
-  clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%);
+  clip-path: polygon(50% 0%, 100% 10%, 85% 100%, 15% 100%, 0% 10%);
   object-fit: cover;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
