@@ -332,9 +332,9 @@ const ApartmentList: React.FC = () => {
         <ApartmentGrid>
           {currentApartments.map((apartment) => (
             <Card key={apartment.hotelId}>
-              <Image src='https://nicehouse.blob.core.windows.net/avatar/00000000-0000-0000-0000-000000000000' alt={apartment.name} />
+              <Image src={apartment.images[0]?.path ?? ''} alt={apartment.name} />
               <ApartmentName>{apartment.name}</ApartmentName>
-              <ApartmentPrice>{apartment.price} VND</ApartmentPrice>
+              <ApartmentPrice>{apartment.rent} VND</ApartmentPrice>
               <p>{apartment.rooms} phòng ngủ</p>
               <p>{apartment.address}</p>
             </Card>

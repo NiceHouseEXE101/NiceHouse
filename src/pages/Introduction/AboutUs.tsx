@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import member1 from '../../assets/members/member1.jpg';
-import member2 from '../../assets/members/member1.jpg';
-import member3 from '../../assets/members/member1.jpg';
-import member4 from '../../assets/members/member1.jpg';
-import member5 from '../../assets/members/member1.jpg';
-import member6 from '../../assets/members/member1.jpg';
+import member1 from '../../assets/members/NICEHOUSE_KIEN.png';
+import member2 from '../../assets/members/NICEHOUSE_NGAN.png';
+import member3 from '../../assets/members/NICEHOUSE_QUYEN.png';
+import member4 from '../../assets/members/NICEHOUSE_SON.png';
+import member5 from '../../assets/members/NICEHOUSE_TRAN.png';
+import member6 from '../../assets/members/NICEHOUSE_TRUONG.png';
 
 
 // Keyframes for smooth entrance animations
@@ -166,17 +166,46 @@ const PhoneNumber = styled.p`
   font-size: 20px;
   color: #343a40;
 `;
-const memberImages = [member1, member2, member3, member4, member5, member6];
+const members = [{
+  id: 1,
+  name: 'Nguyen Trung Kien',
+  image: member1
+},
+{
+  id: 2,
+  name: 'Tran Vi Bao Ngan',
+  image: member2
+},
+{
+  id: 3,
+  name: 'Pham Ngoc Quyen',
+  image: member3
+},
+{
+  id: 4,
+  name: 'Phan Mai Son',
+  image: member4
+},
+{
+  id: 5,
+  name: 'Bui Ngoc Bao Tran',
+  image: member5
+},
+{
+  id: 6,
+  name: 'Vo Phuc Truong',
+  image: member6
+}];
 // Component for AboutUs page
 const AboutUs: React.FC = () => {
   return (
     <AboutUsContainer>
       {/* Left Side: Team Members */}
       <TeamSection>
-        {['Member 1', 'Member 2', 'Member 3', 'Member 4', 'Member 5', 'Member 6'].map((name, index) => (
-          <TeamMember key={index} index={index}>
-            <TeamImage src={memberImages[index]} alt={name} />
-            <MemberName>{name}</MemberName>
+        {members.map((member, index) => (
+          <TeamMember key={member.id} index={index}>
+            <TeamImage src={member.image} alt={member.name} />
+            <MemberName>{member.name}</MemberName>
           </TeamMember>
         ))}
       </TeamSection>
@@ -185,8 +214,8 @@ const AboutUs: React.FC = () => {
       <InfoSection>
         <NicehouseTitle>NICEHOUSE</NicehouseTitle>
         <IntroductionText>
-          Welcome to NICEHOUSE, where we provide luxurious and top-tier living experiences. 
-          We believe in offering our residents an unmatched lifestyle, combining comfort, 
+          Welcome to NICEHOUSE, where we provide luxurious and top-tier living experiences.
+          We believe in offering our residents an unmatched lifestyle, combining comfort,
           elegance, and convenience at the heart of the city.
         </IntroductionText>
 
@@ -199,7 +228,7 @@ const AboutUs: React.FC = () => {
         <InquiriesSection>
           <InquiryTitle>Have any questions?</InquiryTitle>
           <p>Contact us directly at:</p>
-          <PhoneNumber>+1 (800) 123-4567</PhoneNumber>
+          <PhoneNumber>+84 972 839 374</PhoneNumber>
         </InquiriesSection>
       </InfoSection>
     </AboutUsContainer>
