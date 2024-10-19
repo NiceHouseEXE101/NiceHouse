@@ -1,11 +1,9 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import styled, { keyframes } from 'styled-components';
 import useInView from './useInView'; // Custom hook for intersection observer
 import PoolImage from '../../assets/facilities/pool.jpg';
 import FitnessImage from '../../assets/facilities/pool.jpg';
 import GardenImage from '../../assets/facilities/pool.jpg';
-
 // Slide animations for images
 const slideInLeft = keyframes`
   from {
@@ -49,9 +47,18 @@ const FacilitiesContainer = styled(Box)`
   flex-direction: column;
   align-items: center;
 `;
-
+interface FacilityItemProps {
+  reverse?: boolean;
+  imageSrc: string;
+  title: string;
+  description: string;
+}
+interface ImageContainerProps {
+  reverse?: boolean;
+  isVisible?: boolean;
+}
 // Image Container with alternating slide-in animation
-const ImageContainer = styled(Box)`
+const ImageContainer = styled.div<ImageContainerProps>`
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   align-items: center;
@@ -85,9 +92,11 @@ const Image = styled.img`
     margin-bottom: 30px;
   }
 `;
-
+interface TextContainerProps {
+  isVisible?: boolean;
+}
 // Text Container with fade-in animation
-const TextContainer = styled(Box)`
+const TextContainer = styled.div<TextContainerProps>`
   width: 50%;
   padding: 0 30px;
   opacity: 0;
@@ -134,19 +143,22 @@ const Description = styled(Typography)`
 `;
 
 // Individual facility item with image and description
-const FacilityItem = ({ imageSrc, title, description, reverse }) => {
+const FacilityItem: React.FC<FacilityItemProps> = ({ imageSrc, title, description, reverse }) => {
   const [setElement, isVisible] = useInView({ threshold: 0.3 });
 
   return (
-    <ImageContainer reverse={reverse} isVisible={isVisible} ref={setElement}>
-      <Image src={imageSrc} alt={title} />
-      <TextContainer isVisible={isVisible}>
-        <FacilityTitle>{title}</FacilityTitle>
-        <Description>{description}</Description>
-      </TextContainer>
-    </ImageContainer>
+    <div ref={setElement}>
+      <ImageContainer reverse={reverse} isVisible={isVisible}>
+        <Image src={imageSrc} alt={title} />
+        <TextContainer isVisible={isVisible}>
+          <FacilityTitle>{title}</FacilityTitle>
+          <Description>{description}</Description>
+        </TextContainer>
+      </ImageContainer>
+    </div>
   );
 };
+
 
 const Facilities = () => {
   return (

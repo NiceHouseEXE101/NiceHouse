@@ -225,7 +225,7 @@ const ScheduleButton = styled.button`
   }
   margin-top: 40px;
 `;
-const fetchApartmentDetails = async (id: number) => {
+const fetchApartmentDetails = async (_id: number) => {
   // Replace with actual API request or sample data
   return sampleData;
 };

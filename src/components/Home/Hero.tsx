@@ -1,6 +1,5 @@
 // components/Hero.tsx
-import React from 'react';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 const Hero = () => {
   return (

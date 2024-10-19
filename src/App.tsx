@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
             <Route path="*" element={<ErrorPage />} /> {/* Fallback 404 Page */}
             <Route path="/apartment" element={<ApartmentList />} />
-            <Route path="/apartment-detail" element={<ApartmentDetail />} />
+            <Route path="/apartment-detail" element={<ApartmentDetail id={0} />} />
               <Route path="/about" element={<AboutUs />} />
           </Routes>
           <Footer /> {/* Always display footer */}

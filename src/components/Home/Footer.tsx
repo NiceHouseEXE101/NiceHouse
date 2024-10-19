@@ -1,8 +1,5 @@
-import React from 'react';
 import { BsTiktok } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa'; // Facebook icon
-import { SiZalo } from 'react-icons/si'; // Zalo icon
-
 const Footer = () => {
   return (
     <footer style={styles.footer}>

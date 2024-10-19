@@ -1,5 +1,4 @@
-import React from 'react';
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import ImageCarousel from '../../components/Home/ImageCarousel';
 import RoomCarouselSection from '../../components/Home/RoomSection';
 import FacilitiesSection from '../../components/Home/FacilitiesSection ';

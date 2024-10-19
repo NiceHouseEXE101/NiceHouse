@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Button, Typography, Box } from '@mui/material';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import logo1 from '../../assets/logo/logo-notext-black.png'; // Ensure the correct path for the logo
@@ -113,7 +113,7 @@ const navStyle = {
 };
 
 // Navigation link style with dynamic color based on scroll state
-const navLinkStyle = (scrolling) => ({
+const navLinkStyle = (scrolling: any) => ({
   color: scrolling ? '#fff' : '#343a40',
   fontSize: '1.1rem',
   marginRight: '20px',

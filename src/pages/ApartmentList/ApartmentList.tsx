@@ -4,8 +4,6 @@ import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { FaSortAmountDown, FaFilter, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import image from '../../assets/carousels/3.png';
-
 // Container for the entire layout
 const Container = styled.div`
   display: flex;
@@ -220,10 +218,6 @@ const ApartmentList: React.FC = () => {
     fetchAllApartments();
   }, []);
 
-  const transformGoogleDriveLink = (url: string) => {
-    const fileIdMatch = url.match(/\/d\/(.*?)\//);
-    return fileIdMatch ? `https://drive.google.com/uc?export=view&id=${fileIdMatch[1]}` : url;
-  };
   // Sorting logic
   // useEffect(() => {
   //   let sortedApartments = [...sampleApartments];

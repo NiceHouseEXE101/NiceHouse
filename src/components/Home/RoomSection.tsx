@@ -1,25 +1,13 @@
-import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import APT_1 from '../../assets/rooms/APT_1.jpg';
-import APT_2 from '../../assets/rooms/APT_2.jpg';
 import APT_3 from '../../assets/rooms/APT_3.jpg';
 import APT_4 from '../../assets/rooms/APT_4.jpg';
-import APT_5 from '../../assets/rooms/APT_5.jpg';
 import APT_6 from '../../assets/rooms/APT_6.jpg';
-import APT_7 from '../../assets/rooms/APT_7.jpg';
 import APT_8 from '../../assets/rooms/APT_8.jpg';
-import APT_9 from '../../assets/rooms/APT_9.jpg';
 import Vina_1 from '../../assets/rooms/Vina_1.jpg';
-import Vina_2 from '../../assets/rooms/Vina_2.jpg';
-import Vina_3 from '../../assets/rooms/Vina_3.jpg';
-import Vina_4 from '../../assets/rooms/Vina_4.jpg';
-import Vina_5 from '../../assets/rooms/Vina_5.jpg';
-import Vina_6 from '../../assets/rooms/Vina_6.jpg';
-import Vina_7 from '../../assets/rooms/Vina_7.jpg';
-import Vina_8 from '../../assets/rooms/Vina_8.jpg';
+
 
 const RoomCarousel = ({ settings, children }: any) => {
   return (

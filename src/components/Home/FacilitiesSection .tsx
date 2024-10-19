@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Grid, Typography, Card, CardMedia, CardContent } from '@mui/material';
 import { styled } from '@mui/system';
 import PoolImage from '../../assets/facilities/pool.jpg';

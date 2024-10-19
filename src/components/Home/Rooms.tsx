@@ -1,5 +1,4 @@
 // components/Rooms.tsx
-import React from 'react';
 import { Card, CardContent, CardMedia, Grid, Typography, Button } from '@mui/material';
 
 const rooms = [

@@ -98,7 +98,7 @@ const FilterSection = () => {
   const [rooms, setRooms] = React.useState("");
   const [priceRange, setPriceRange] = React.useState([100, 1000]);
 
-  const handlePriceChange = (event: Event, newValue: number | number[]) => {
+  const handlePriceChange = (_event: Event, newValue: number | number[]) => {
     setPriceRange(newValue as number[]);
   };
 

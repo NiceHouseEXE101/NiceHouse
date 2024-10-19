@@ -36,7 +36,7 @@ const BlogSection = () => {
         marginBottom: '3rem',
         letterSpacing: '1px',
         fontFamily: 'Brice Regular SemiExpanded',
-        textTransform: 'Uppercase'
+        textTransform: 'uppercase' as const
     };
 
     const gridStyle = {

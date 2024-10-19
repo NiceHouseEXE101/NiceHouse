@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const useInView = (options) => {
+const useInView = (options: IntersectionObserverInit): [(element: HTMLDivElement | null) => void, boolean] => {
   const [isVisible, setIsVisible] = useState(false);
-  const [element, setElement] = useState(null);
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!element) return;

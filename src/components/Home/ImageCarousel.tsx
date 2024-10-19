@@ -1,4 +1,4 @@
-  import React, { useState } from 'react';
+  import { useState } from 'react';
   import { Button, Box, Typography } from '@mui/material';
 
   // Import images from assets folder
@@ -41,7 +41,7 @@
       );
     };
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: { currentTarget: { offsetWidth: any; }; clientX: any; }) => {
       const carouselWidth = e.currentTarget.offsetWidth;
       const mouseX = e.clientX;
 
@@ -77,7 +77,6 @@
         <Box
           component="img"
           src={images[currentIndex].src}
-          alt={images[currentIndex].title}
           sx={{
             width: '100%',
             height: '100%',
@@ -120,7 +119,6 @@
               textShadow: '2px 2px 8px rgba(0,0,0,0.8)', // Add shadow for emphasis
             }}
           >
-            {images[currentIndex].title}
           </Typography>
           <Typography
             variant="h6"
@@ -133,7 +131,6 @@
               lineHeight: 1.6,
             }}
           >
-            {images[currentIndex].description}
           </Typography>
         </Box>
 
