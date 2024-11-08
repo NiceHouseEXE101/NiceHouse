@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FaBed, FaMapMarkerAlt, FaRulerCombined, FaSwimmingPool } from 'react-icons/fa';
-import Image1 from './../'
 // Sample Data
 const sampleData = {
   title: "Luxury Apartment in City Center",
