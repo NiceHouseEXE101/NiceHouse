@@ -4,10 +4,11 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 import logo1 from '../../assets/logo/logo-notext-black.png'; // Ensure the correct path for the logo
 import logo2 from '../../assets/logo/logo-notext-white.png';
 import '../../font/Brice Regular SemiExpanded.otf'; // Import your font styles
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
-
+  const navigate = useNavigate()
   // Detect scroll to change the header's background color
   useEffect(() => {
     const handleScroll = () => {
@@ -74,9 +75,9 @@ const Header = () => {
                   <Nav.Link href="/apartment" style={navLinkStyle(scrolling)}>
                     Dịch vụ
                   </Nav.Link>
-                  <Nav.Link href="/contact" style={navLinkStyle(scrolling)}>
+                  {/* <Nav.Link href="/contact" style={navLinkStyle(scrolling)}>
                     Liên hệ
-                  </Nav.Link>
+                  </Nav.Link> */}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -85,6 +86,7 @@ const Header = () => {
             <Button
               variant="contained"
               color="secondary"
+              onClick={() => navigate('/apartment')}
               sx={{
                 fontFamily: 'Brice Regular SemiExpanded',
                 backgroundColor: scrolling ? '#fff' : '#343a40',

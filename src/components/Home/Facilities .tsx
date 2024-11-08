@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import styled, { keyframes } from 'styled-components';
 import useInView from './useInView'; // Custom hook for intersection observer
-import PoolImage from '../../assets/facilities/pool.jpg';
+import AparmentImage from '../../assets/facilities/aparment.jpg';
 import FitnessImage from '../../assets/facilities/pool.jpg';
 import GardenImage from '../../assets/facilities/pool.jpg';
 // Slide animations for images
@@ -168,12 +168,12 @@ const Facilities = () => {
             fontSize: '2.4rem',
             fontFamily: 'Brice Regular SemiExpanded',
             fontWeight: '700',
-            color: '#343a40'
+            color: '#343a40',
           }
         }>Tiện nghi chất lượng cao</FacilitiesTitle>
         <FacilityItem
-          imageSrc={PoolImage}
-          title="Hồ bơi trong nhà"
+          imageSrc={FitnessImage}
+          title="Cơ sở vật chất hiện đại"
           description="Thư giãn và ngắm nhìn phong cảnh từ trên cao."
           reverse={false}
         />

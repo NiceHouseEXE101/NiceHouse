@@ -1,26 +1,28 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
-import image from '../../assets/carousels/1.png';
+import image from '../../assets/rating/sinhvien.jpg';
+import image2 from '../../assets/rating/noitro.jpg';
+import image3 from '../../assets/rating/giangvien.jpg';
 
 const CustomerReviewsSection: React.FC = () => {
   const reviews = [
     {
-      name: 'John Doe',
-      review: '“Amazing service and great experience! Highly recommend to everyone!”',
+      name: 'Sinh viên',
+      review: '“NICEHOUSE là một dịch vụ cung cấp nhà ở an toàn và chuyên nghiệp”',
       image: image,
       rating: 5,
     },
     {
-      name: 'Jane Smith',
-      review: '“A delightful experience with top-notch customer service. Would love to come back!”',
-      image: image,
+      name: 'Giảng viên',
+      review: '“Rất tự hào và đáng ghi nhận nỗ lực của NICEHOUSE”',
+      image: image3,
+      rating: 5,
+    },
+    {
+      name: 'Nội trợ',
+      review: '“Chung cư NCIEHOUSE giới thiệu đều rất tiện nghi và thoải mái”',
+      image: image2,
       rating: 4,
-    },
-    {
-      name: 'Emily Davis',
-      review: '“Truly remarkable and unforgettable experience. Excellent hospitality!”',
-      image: image,
-      rating: 5,
     },
   ];
 

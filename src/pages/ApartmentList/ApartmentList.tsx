@@ -1,10 +1,9 @@
 
-// export default ApartmentList;
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { FaSortAmountDown, FaFilter, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-// Container for the entire layout
+import { Link } from 'react-router-dom';
 const Container = styled.div`
   display: flex;
   padding: 20px;
@@ -17,7 +16,6 @@ const Container = styled.div`
   }
 `;
 
-// Sidebar (Filter Section)
 const Sidebar = styled.div`
   flex: 1;
   background-color: #f8f9fa;
@@ -34,14 +32,12 @@ const Sidebar = styled.div`
   }
 `;
 
-// Main content and sort area
 const MainContent = styled.div`
   flex: 3;
   display: flex;
   flex-direction: column;
 `;
 
-// Sort Bar styling
 const SortBar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -49,7 +45,6 @@ const SortBar = styled.div`
   margin-bottom: 20px;
 `;
 
-// Fade-in animation for the apartment list
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -75,7 +70,6 @@ const ApartmentGrid = styled.div`
   }
 `;
 
-// Pagination styled for better appearance
 const Pagination = styled.div`
   display: flex;
   justify-content: center;
@@ -114,7 +108,6 @@ const FilterSection = styled.div`
   margin-bottom: 20px;
 `;
 
-// Filter label with icon
 const FilterLabel = styled.label`
   font-size: 16px;
   color: #343a40;
@@ -124,7 +117,6 @@ const FilterLabel = styled.label`
   font-family: 'Brice Regular SemiExpanded', sans-serif;
 `;
 
-// Filter input fields and dropdowns
 const FilterInput = styled.input`
   width: 100%;
   padding: 10px;
@@ -159,7 +151,6 @@ const FilterButton = styled.button`
   }
 `;
 
-// Apartment card style with smooth hover effect
 const Card = styled.div`
   background-color: #ffffff;
   border-radius: 8px;
@@ -200,13 +191,12 @@ const ApartmentPrice = styled.p`
 // Main component
 const ApartmentList: React.FC = () => {
   const [apartments, setApartments] = useState<any[]>([]);
-  const [filters, setFilters] = useState({ price: '', bedrooms: '', area: '' });
+  const [filters, setFilters] = useState({ price: '', bedrooms: '', area: '', minRent:'', maxRent:'' });
   const [sort, setSort] = useState('price');
   const [currentPage, setCurrentPage] = useState(1);
   const apartmentsPerPage = 9;
 
   useEffect(() => {
-    // Fetch all apartments from the API
     const fetchAllApartments = async () => {
       try {
         const response = await axios.get('https://nicehouse-api.azurewebsites.net/api/hotel/all');
@@ -218,18 +208,21 @@ const ApartmentList: React.FC = () => {
     fetchAllApartments();
   }, []);
 
-  // Sorting logic
-  // useEffect(() => {
-  //   let sortedApartments = [...sampleApartments];
-  //   if (sort === 'price') {
-  //     sortedApartments.sort((a, b) => parseInt(a.price.replace(/,/g, '')) - parseInt(b.price.replace(/,/g, '')));
-  //   } else if (sort === 'price-desc') {
-  //     sortedApartments.sort((a, b) => parseInt(b.price.replace(/,/g, '')) - parseInt(a.price.replace(/,/g, '')));
-  //   } else if (sort === 'newest') {
-  //     sortedApartments.reverse();
-  //   }
-  //   setApartments(sortedApartments);
-  // }, [sort]);
+  const handleApplyFilters = async () => {
+    const requestData = {
+      minRent: filters.minRent || null,
+      maxRent: filters.maxRent || null,
+      rooms: filters.bedrooms || null,
+      address: filters.area || null,
+    };
+    try {
+      const response = await axios.post('https://nicehouse-api.azurewebsites.net/api/hotel/search', requestData);
+      setApartments(response.data);
+    } catch (error) {
+      console.error('Error fetching filtered apartments:', error);
+    }
+  };
+
 
   // Pagination logic
   const indexOfLastApartment = currentPage * apartmentsPerPage;
@@ -256,12 +249,25 @@ const ApartmentList: React.FC = () => {
         <FilterSection>
           <FilterLabel>
             <FaFilter style={{ marginRight: '8px' }} />
+            Giá tối thiểu
+          </FilterLabel>
+          <FilterInput
+            type="number"
+            value={filters.minRent}
+            onChange={(e) => setFilters({ ...filters, minRent: e.target.value })}
+            placeholder="Nhập giá tối thiểu"
+          />
+        </FilterSection>
+        
+        <FilterSection>
+          <FilterLabel>
+            <FaFilter style={{ marginRight: '8px' }} />
             Giá tối đa
           </FilterLabel>
           <FilterInput
             type="number"
-            value={filters.price}
-            onChange={(e) => setFilters({ ...filters, price: e.target.value })}
+            value={filters.maxRent}
+            onChange={(e) => setFilters({ ...filters, maxRent: e.target.value })}
             placeholder="Nhập giá tối đa"
           />
         </FilterSection>
@@ -273,13 +279,13 @@ const ApartmentList: React.FC = () => {
           </FilterLabel>
           <FilterSelect value={filters.area} onChange={(e) => setFilters({ ...filters, area: e.target.value })}>
             <option value="">Bất kỳ</option>
-            <option value="Downtown">Downtown</option>
-            <option value="Uptown">Uptown</option>
-            <option value="Suburb">Suburb</option>
+            <option value="Khu đô thị An Phú Thịnh">Khu đô thị An Phú Thịnh</option>
+            {/* <option value="Uptown">Uptown</option>
+            <option value="Suburb">Suburb</option> */}
           </FilterSelect>
         </FilterSection>
 
-        <FilterButton>Áp dụng bộ lọc</FilterButton>
+        <FilterButton  onClick={handleApplyFilters}>Áp dụng bộ lọc</FilterButton>
       </Sidebar>
 
       <MainContent>
@@ -317,23 +323,22 @@ const ApartmentList: React.FC = () => {
           >
             <option value="price">Giá tăng dần</option>
             <option value="price-desc">Giá giảm dần</option>
-            <option value="newest">Mới nhất</option>
           </select>
         </SortBar>
 
 
         {/* Apartment List */}
-        <ApartmentGrid>
-          {currentApartments.map((apartment) => (
-            <Card key={apartment.hotelId}>
-              <Image src={apartment.images[0]?.path ?? ''} alt={apartment.name} />
-              <ApartmentName>{apartment.name}</ApartmentName>
-              <ApartmentPrice>{apartment.rent} VND</ApartmentPrice>
-              <p>{apartment.rooms} phòng ngủ</p>
-              <p>{apartment.address}</p>
-            </Card>
-          ))}
-        </ApartmentGrid>
+                  <ApartmentGrid>
+                    {currentApartments.map((apartment) => (
+                      <Card key={apartment.hotelId}>
+                        <Image src={apartment.images[0]?.path ?? ''} alt={apartment.name} />
+                        <ApartmentName>{apartment.name}</ApartmentName> 
+                        <ApartmentPrice>{apartment.rent} VND</ApartmentPrice>
+                        <p>{apartment.rooms} phòng ngủ</p>
+                        <p>{apartment.address}</p>
+                      </Card>
+                    ))}
+                  </ApartmentGrid>
 
         {/* Pagination */}
         <Pagination>
@@ -343,21 +348,21 @@ const ApartmentList: React.FC = () => {
             onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}
             style={{
               backgroundColor: '#343a40',
-              color: '#ffffff', // White text for contrast
-              border: 'none',   // Remove default border
-              padding: '10px 15px', // Add some padding
-              borderRadius: '4px', // Rounded corners
-              cursor: currentPage === 1 ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
-              opacity: currentPage === 1 ? 0.6 : 1 // Slightly transparent when disabled
+              color: '#ffffff', 
+              border: 'none',  
+              padding: '10px 15px', 
+              borderRadius: '4px', 
+              cursor: currentPage === 1 ? 'not-allowed' : 'pointer', 
+              opacity: currentPage === 1 ? 0.6 : 1 
             }}
 
             onMouseEnter={(e) => {
               if (indexOfFirstApartment < apartments.length) {
-                e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
+                e.currentTarget.style.backgroundColor = '#FF8500'; 
               }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
+              e.currentTarget.style.backgroundColor = '#343a40'; 
             }}
           >
             <FaArrowLeft />
@@ -369,22 +374,22 @@ const ApartmentList: React.FC = () => {
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={indexOfLastApartment >= apartments.length}
             style={{
-              backgroundColor: '#343a40', // Dark background
-              color: '#ffffff', // White text for contrast
-              border: 'none', // Remove default border
-              padding: '10px 15px', // Add padding for better touch target
-              borderRadius: '4px', // Rounded corners
-              cursor: indexOfLastApartment >= apartments.length ? 'not-allowed' : 'pointer', // Change cursor based on disabled state
-              opacity: indexOfLastApartment >= apartments.length ? 0.6 : 1, // Slightly transparent when disabled
-              transition: 'background-color 0.3s, transform 0.2s', // Smooth transitions for hover effects
+              backgroundColor: '#343a40', 
+              color: '#ffffff', 
+              border: 'none', 
+              padding: '10px 15px', 
+              borderRadius: '4px', 
+              cursor: indexOfLastApartment >= apartments.length ? 'not-allowed' : 'pointer', 
+              opacity: indexOfLastApartment >= apartments.length ? 0.6 : 1, 
+              transition: 'background-color 0.3s, transform 0.2s', 
             }}
             onMouseEnter={(e) => {
               if (indexOfLastApartment < apartments.length) {
-                e.currentTarget.style.backgroundColor = '#FF8500'; // Darker shade on hover
+                e.currentTarget.style.backgroundColor = '#FF8500'; 
               }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#343a40'; // Reset to original color
+              e.currentTarget.style.backgroundColor = '#343a40'; 
             }}
           >
             <FaArrowRight />

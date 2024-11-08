@@ -1,25 +1,27 @@
 import React from 'react';
-import image from '../../assets/carousels/2.png';
+import image from '../../assets/travel/kyco.jpg';
+import image2 from '../../assets/travel/thapbanhit.jpg';
+import image3 from '../../assets/travel/eogio.jpg';
 
 const BlogSection = () => {
     const blogs = [
         {
             id: 1,
-            title: 'Stunning Lakeside View',
-            description: 'Enjoy the peaceful view of the serene lake.',
+            title: 'Đảo Kỳ Co',
+            description: 'Kỳ Co - khám phá bức tranh tuyệt đẹp với biển xanh, cát trắng.',
             imgSrc: image,
         },
         {
             id: 2,
-            title: 'Mountain Adventures',
-            description: 'Explore the breathtaking mountain ranges.',
-            imgSrc: image,
+            title: 'Tháp Bánh Ít',
+            description: 'Tháp Bánh Ít - dấu ấn của Vương triều Chăm Pa hùng mạnh.',
+            imgSrc: image2,
         },
         {
             id: 3,
-            title: 'Sunset Over the City',
-            description: 'Witness the spectacular sunset over the skyline.',
-            imgSrc: image,
+            title: 'Eo Gió',
+            description: 'Eo Gió - vẻ đẹp hoang sơ làm say lòng người.',
+            imgSrc: image3,
         },
     ];
 
@@ -63,7 +65,7 @@ const BlogSection = () => {
 
     const imageStyle = {
         width: '100%',
-        height: 'auto',
+        height: '350px',
         transition: 'transform 0.5s ease',
     };
 
@@ -120,7 +122,7 @@ const BlogSection = () => {
 
     return (
         <div style={sectionStyle}>
-            <h2 style={titleStyle}>CẢNH ĐẸP QUANH KHU CHUNG CƯ</h2>
+            <h2 style={titleStyle}>CẢNH ĐẸP XỨNG TẦM TRẢI NGHIỆM</h2>
             <div style={gridStyle}>
                 {blogs.map((blog) => (
                     <div
@@ -136,6 +138,7 @@ const BlogSection = () => {
                         <div style={infoStyle}>
                             <h3 style={nameStyle}>{blog.title}</h3>
                             <p style={descriptionStyle}>{blog.description}</p>
+                            <a>(Ảnh: sưu tầm)</a>
                         </div>
                     </div>
                 ))}

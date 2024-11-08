@@ -2,7 +2,9 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Typography } from '@mui/material';
 import styled from 'styled-components';
-
+import APT_3 from '../../assets/rooms/APT_3.jpg';
+import Vina_2 from '../../assets/rooms/Vina_2.jpg';
+import APT_6 from '../../assets/rooms/APT_6.jpg';
 // Styled components for hover effects and styling
 const ServiceItem = styled.div`
   position: relative;
@@ -62,50 +64,9 @@ const FacilitiesOffer: React.FC = () => {
           <Col md={4} className="mb-4">
             <ServiceItem>
               <img
-                src="https://wp.ditsolution.net/royella-multipurpose/wp-content/uploads/2023/11/offers-2.jpg"
-                alt="Double Suite Room"
-              />
-              <RoomPricing>25% off</RoomPricing>
-              <Typography variant="h6" className="mt-3" style={{
-                   fontSize: '1.3rem',
-                   fontFamily: 'Brice Regular SemiExpanded',
-                   color: '#343a40',       
-                   fontWeight: '700'       
-              }}>
-                Double Suite Room
-              </Typography>
-              <p>From: $200</p>
-              <p>4.5 (Review)</p>
-              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Book Now</Button>
-            </ServiceItem>
-          </Col>
-
-          <Col md={4} className="mb-4">
-            <ServiceItem>
-              <img
-                src="https://wp.ditsolution.net/royella-multipurpose/wp-content/uploads/2023/11/offers-2-1.jpg"
-                alt="Superior Bed Room"
-              />
-              <RoomPricing>28% off</RoomPricing>
-              <Typography variant="h6" className="mt-3" style={{
-                   fontSize: '1.3rem',
-                   fontFamily: 'Brice Regular SemiExpanded',
-                   color: '#343a40',       
-                   fontWeight: '700'       
-              }}>
-                Superior Bed Room
-              </Typography>
-              <p>From: $180</p>
-              <p>4.5 (Review)</p>
-              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Book Now</Button>
-            </ServiceItem>
-          </Col>
-
-          <Col md={4} className="mb-4">
-            <ServiceItem>
-              <img
-                src="https://wp.ditsolution.net/royella-multipurpose/wp-content/uploads/2023/11/offers-3.jpg"
-                alt="Deluxe Double Room"
+                src={APT_6}
+                alt="Nội thất cơ bản"
+                style={{height:'300px'}}
               />
               <RoomPricing>35% off</RoomPricing>
               <Typography variant="h6" className="mt-3" style={{
@@ -114,11 +75,55 @@ const FacilitiesOffer: React.FC = () => {
                    color: '#343a40',       
                    fontWeight: '700'       
               }}>
-                Deluxe Double Room
+                Nội thất cơ bản
               </Typography>
-              <p>From: $220</p>
-              <p>4.5 (Review)</p>
-              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Book Now</Button>
+              <p>Giá : LH</p>
+              <p>203 (Lượt thích)</p>
+              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Liên hệ</Button>
+            </ServiceItem>
+          </Col>
+
+          <Col md={4} className="mb-4">
+            <ServiceItem>
+              <img
+                src={Vina_2}
+                alt="Nội thất đầy đủ"
+                style={{height:'300px'}}
+              />
+              <RoomPricing>28% off</RoomPricing>
+              <Typography variant="h6" className="mt-3" style={{
+                   fontSize: '1.3rem',
+                   fontFamily: 'Brice Regular SemiExpanded',
+                   color: '#343a40',       
+                   fontWeight: '700'       
+              }}>
+                Nội thất đầy đủ
+              </Typography>
+              <p>Giá : LH</p>
+              <p>112 (Lượt thích)</p>
+              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Liên hệ</Button>
+            </ServiceItem>
+          </Col>
+
+          <Col md={4} className="mb-4">
+            <ServiceItem>
+              <img
+                src= {APT_3}
+                alt="Nội thất cao cấp"
+                style={{height:'300px'}}
+              />
+              <RoomPricing>25% off</RoomPricing>
+              <Typography variant="h6" className="mt-3" style={{
+                   fontSize: '1.3rem',
+                   fontFamily: 'Brice Regular SemiExpanded',
+                   color: '#343a40',       
+                   fontWeight: '700'       
+              }}>
+                Nội thất cao cấp
+              </Typography>
+              <p>Giá : LH</p>
+              <p>322 (Lượt thích)</p>
+              <Button variant="primary" style={{ backgroundColor: '#343a40', borderColor: '#343a40'}}>Liên hệ</Button>
             </ServiceItem>
           </Col>
         </Row>

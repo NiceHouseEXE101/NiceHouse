@@ -2,7 +2,7 @@ import { Box, Grid, Typography, Card, CardMedia, CardContent } from '@mui/materi
 import { styled } from '@mui/system';
 import PoolImage from '../../assets/facilities/pool.jpg';
 import SchoolImage from '../../assets/facilities/school.jpg';
-import GymImage from '../../assets/facilities/gym.jpg';
+import CoffeeImage from '../../assets/facilities/coffee.jpg';
 import LogoImage from '../../assets/logo/logo-white.png';
 import Background from '../../assets/background/background.png'
 // Background Section
@@ -119,14 +119,14 @@ const FacilitiesSection = () => {
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <FacilityCard>
-            <CardMedia component="img" height="200" image={GymImage} alt="Fitness Center" />
-            <Overlay className="overlay">Phòng Gym trong nhà</Overlay>
+            <CardMedia component="img" height="200" image={CoffeeImage} alt="Fitness Center" />
+            <Overlay className="overlay">Cà phê thư giãn</Overlay>
             <CardContent>
               <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#343a40',fontFamily: 'Brice Regular SemiExpanded' }}>
-                Phòng Gym trong nhà
+                Cà phê thư giãn
               </Typography>
               <Typography variant="body2" sx={{ color: '#6c757d' }}>
-                Nâng cao sức khỏe trong chính nơi ở của bạn.
+                Tận hưởng không gian sống xanh và yên tĩnh
               </Typography>
             </CardContent>
           </FacilityCard>

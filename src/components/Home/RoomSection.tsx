@@ -20,44 +20,44 @@ const RoomCarousel = ({ settings, children }: any) => {
 const roomsData = [
   {
     image: APT_3,
-    name: 'Standard Room',
-    price: '$100/night',
-    area: '30 sqm',
-    beds: '2 Single Beds',
-    rating: 3,
+    name: 'Cao cấp',
+    price: 'giá từ 3.000.000vnđ',
+    area: 'diện tích: 65m2',
+    beds: '2 phòng',
+    rating: 5,
   },
   {
     image: APT_4,
-    name: 'Penthouse Suite',
-    price: '$350/night',
-    area: '80 sqm',
-    beds: '3 King Beds',
-    rating: 5,
+    name: 'Đơn giản',
+    price: 'giá từ 2.500.000vnđ',
+    area: 'diện tích: 65m2',
+    beds: '2 phòng',
+    rating: 4,
   },
 
   {
     image: APT_6,
-    name: 'Deluxe Room',
-    price: '$150/night',
-    area: '40 sqm',
-    beds: '1 King Bed',
+    name: 'Tiện nghi',
+    price: 'giá từ 2.500.000vnđ',
+    area: 'diện tích: 65m2',
+    beds: '2 phòng',
     rating: 4,
   },
 
   {
     image: APT_8,
-    name: 'Penthouse Suite',
-    price: '$350/night',
-    area: '80 sqm',
-    beds: '3 King Beds',
+    name: 'Thoải mái',
+    price: 'giá từ 2.500.000vnđ',
+    area: 'diện tích: 65m2',
+    beds: '2 phòng',
     rating: 5,
   },
   {
     image: Vina_1,
-    name: 'Deluxe Room',
-    price: '$150/night',
-    area: '40 sqm',
-    beds: '1 King Bed',
+    name: 'Đẳng cấp',
+    price: 'giá từ 2.500.000vnđ',
+    area: 'diện tích: 65m2',
+    beds: '2 phòng',
     rating: 4,
   },
 ];
@@ -150,7 +150,7 @@ const RoomCarouselSection = () => {
               <img
                 src={room.image}
                 alt={room.name}
-                style={{ width: '100%', height: 'auto' }}
+                style={{ width: '100%', height: '200px',objectFit: 'cover', borderRadius: '8px'}}
               />
               <Typography
                 variant="h6"
@@ -205,7 +205,7 @@ const RoomCarouselSection = () => {
                     textTransform: 'uppercase',
                   }}
                 >
-                  {room.rating === 5 ? 'Luxury' : 'Comfort'}
+                  {room.rating === 5 ? 'Sang trọng' : 'Thoải mái'}
                 </Typography>
               </Box>
             </RoomCard>

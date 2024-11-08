@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import member1 from '../../assets/members/NICEHOUSE_KIEN.png';
 import member2 from '../../assets/members/NICEHOUSE_NGAN.png';
@@ -6,9 +6,8 @@ import member3 from '../../assets/members/NICEHOUSE_QUYEN.png';
 import member4 from '../../assets/members/NICEHOUSE_SON.png';
 import member5 from '../../assets/members/NICEHOUSE_TRAN.png';
 import member6 from '../../assets/members/NICEHOUSE_TRUONG.png';
+import qrCodeImage from '../../assets/qrcode/qr-code.png'; 
 
-
-// Keyframes for smooth entrance animations
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -196,8 +195,50 @@ const members = [{
   name: 'Vo Phuc Truong',
   image: member6
 }];
-// Component for AboutUs page
+
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+`;
+
+const QRCodeImage = styled.img`
+  width: 90%;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+`;
+
 const AboutUs: React.FC = () => {
+const [isModalOpen, setModalOpen] = useState(false);
+const toggleModal = () => setModalOpen(!isModalOpen);
   return (
     <AboutUsContainer>
       {/* Left Side: Team Members */}
@@ -214,23 +255,31 @@ const AboutUs: React.FC = () => {
       <InfoSection>
         <NicehouseTitle>NICEHOUSE</NicehouseTitle>
         <IntroductionText>
-          Welcome to NICEHOUSE, where we provide luxurious and top-tier living experiences.
-          We believe in offering our residents an unmatched lifestyle, combining comfort,
-          elegance, and convenience at the heart of the city.
+          Chào mừng đến với NICEHOUSE, nơi chúng tôi cung cấp những trải nghiệm sống sang trọng và đẳng cấp. Chúng tôi tin tưởng vào việc mang đến cho cư dân một phong cách sống vô song, kết hợp sự thoải mái, thanh lịch và tiện lợi ngay tại trung tâm thành phố.
         </IntroductionText>
 
         <ButtonGroup>
-          <Button>Join Us</Button>
-          <Button>Support Us</Button>
+          <Button>Tìm hiểu thêm</Button>
+          <Button onClick={toggleModal}>Nâng cấp dịch vụ </Button>
         </ButtonGroup>
 
         {/* Inquiries Section */}
         <InquiriesSection>
-          <InquiryTitle>Have any questions?</InquiryTitle>
-          <p>Contact us directly at:</p>
+          <InquiryTitle>Bạn có thắc mắc?</InquiryTitle>
+          <p>Liên hệ trực tiếp với chúng tôi :</p>
           <PhoneNumber>+84 972 839 374</PhoneNumber>
         </InquiriesSection>
       </InfoSection>
+      {isModalOpen && (
+        <ModalOverlay onClick={toggleModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <CloseButton onClick={toggleModal}>&times;</CloseButton>
+            <h2>SUPPORT NICEHOUSE</h2>
+            <QRCodeImage src={qrCodeImage} alt="QR Code for Donation" />
+            <p>Hỗ trợ nâng cao dịch vụ</p>
+          </ModalContent>
+        </ModalOverlay>
+      )}
     </AboutUsContainer>
   );
 };
