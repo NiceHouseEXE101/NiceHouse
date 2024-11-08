@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import styled, { keyframes } from 'styled-components';
 import useInView from './useInView'; // Custom hook for intersection observer
-import AparmentImage from '../../assets/facilities/aparment.jpg';
 import FitnessImage from '../../assets/facilities/pool.jpg';
 import GardenImage from '../../assets/facilities/pool.jpg';
 // Slide animations for images

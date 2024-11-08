@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { FaSortAmountDown, FaFilter, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 const Container = styled.div`
   display: flex;
   padding: 20px;
